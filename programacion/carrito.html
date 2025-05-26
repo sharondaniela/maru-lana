@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrito | Ruanas Maru-Lana</title>
+  <link rel="stylesheet" href="estilos/carrito.css">
+</head>
+<body>
+      <header>
+    <nav class="navbar">
+      <h1 class="logo">Productos | Ruanas Maru-Lana</h1>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="#">Carrito</a></li>
+        <li><a href="login.html">Iniciar sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="carrito-container">
+    <h2>Mi Carrito</h2>
+
+    <div class="producto-carrito">
+      <img src="imagenes/ruana1.jpg" alt="Ruana clásica">
+      <div class="info-producto">
+        <h3>Ruana Clásica</h3>
+        <p>Precio: $120.000</p>
+        <div class="cantidad">
+          <button class="btn-menos">-</button>
+          <span class="contador">1</span>
+          <button class="btn-mas">+</button>
+        </div>
+      </div>
+      <button class="btn-eliminar">Eliminar</button>
+    </div>
+
+    <!-- Puedes duplicar el bloque de .producto-carrito para más productos -->
+
+    <div class="resumen-carrito">
+      <h3>Total: $120.000</h3>
+      <button class="btn-comprar">Finalizar Compra</button>
+    </div>
+  </div>
+</body>
+</html>
