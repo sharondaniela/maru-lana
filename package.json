@@ -1,0 +1,27 @@
+{
+  "name": "maru-lana",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sharondaniela/maru-lana.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sharondaniela/maru-lana/issues"
+  },
+  "homepage": "https://github.com/sharondaniela/maru-lana#readme",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "multer": "^2.0.0",
+    "sqlite3": "^5.1.7"
+  }
+}
