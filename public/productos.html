@@ -1,323 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Productos | Ruanas Maru-Lana</title>
-  <link rel="stylesheet" href="css/productos.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/productos.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <h1 class="logo">Productos | Ruanas Maru-Lana</h1>
-      <ul class="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="productos.html">Productos</a></li>
-        <li><a href="carrito.html">Carrito</a></li>
-        <li><a href="login.html">Iniciar sesión</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header class="navbar">
+        <h1 class="logo">Mi Tienda</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<section class="carrusel-scroll">
-  <div class="slide-scroll">
-    <div class="item">
-      <img src="imagenes/ruanacafetradicional.png.jpg" alt="Ruana Clásica">
-      <div class="descripcion">
-        <h2>Ruana Cafe Tradicional</h2>
-        <p>Tejida con lana virgen, ideal <br>para el clima frío de montaña.</p>
-      </div>
-    </div>
-    <div class="item">
-      <img src="imagenes/ruanablanca.jpg" alt="Ruana Moderna">
-      <div class="descripcion">
-        <h2>Ruana Blanca</h2>
-        <p>Colores vivos y diseño actual.<br> Perfecta para usar a diario con estilo.</p>
-      </div>
-    </div>
-    <div class="item">
-      <img src="imagenes/ruananegra.jpg" alt="Ruana Premium">
-      <div class="descripcion">
-        <h2>Ruana Negra</h2>
-        <p>Color negro tracional para <br>cualquier tipo de evento.</p>
-      </div>
-    </div>
-        <div class="item">
-      <img src="imagenes/Sacocrochet.jpg" alt="Ruana Premium">
-      <div class="descripcion">
-        <h2>Saco Crochet</h2>
-        <p>Hecha a mano con lana. <br>Edición limitada, elegante y única.</p>
-      </div>
-    </div>
-        <div class="item">
-      <img src="imagenes/sacolana.jpg" alt="Ruana Premium">
-      <div class="descripcion">
-        <h2>Ruana Pico</h2>
-        <p>Esta es una ruana tipo oficinera, <br>es comoda y se ajusta a la medida <br>de la persona</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <main>
+        <section class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slider-slide active">
+                    <img src="imagenes/sacolana.jpg" alt="Oferta 1">
+                    <div class="caption">¡Grandes descuentos en ropa!</div>
+                </div>
+                <div class="slider-slide">
+                    <img src="imagenes/Sacocrochet.jpg" alt="Nueva Colección">
+                    <div class="caption">Descubre nuestra nueva colección de accesorios.</div>
+                </div>
+                <div class="slider-slide">
+                    <img src="imagenes/ruanablancatresrayas.jpg" alt="Liquidación Final">
+                    <div class="caption">Hasta 50% de descuento en artículos seleccionados.</div>
+                </div>
+            </div>
+            <div class="slider-dots">
+                <span class="dot active" data-slide-index="0"></span>
+                <span class="dot" data-slide-index="1"></span>
+                <span class="dot" data-slide-index="2"></span>
+            </div>
+        </section>
 
+        <section class="productos">
+            <h2>Nuestros Productos</h2>
+            <div class="contenedor-productos">
+                <div class="producto">
+                    <img src="imagenes/ruanacafetradicional.png.jpg" alt="Ruana Café Tradicional">
+                    <h3>Ruana Cafe Tradicional</h3>
+                    <p>$120.000</p>
+                    <div class="cantidad">
+                        <button class="btn-menos">-</button>
+                        <span class="contador">1</span>
+                        <button class="btn-mas">+</button>
+                    </div>
+                    <button class="btn-agregar">Agregar</button>
+                </div>
 
+                <div class="producto">
+                    <img src="imagenes/ruanablanca.jpg" alt="Ruana Blanca">
+                    <h3>Ruana Blanca</h3>
+                    <p>$120.000</p>
+                    <div class="cantidad">
+                        <button class="btn-menos">-</button>
+                        <span class="contador">1</span>
+                        <button class="btn-mas">+</button>
+                    </div>
+                    <button class="btn-agregar">Agregar</button>
+                </div>
 
-  <main class="contenedor-productos">
+                </div>
+        </section>
+    </main>
 
-
-    <div class="producto">
-      <img src="imagenes/ruanacafetradicional.png.jpg" alt="Ruana artesanal">
-      <h3>Ruana Cafe Tradicional</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
- 
-         <div class="producto">
-      <img src="imagenes/ruanablanca.jpg" alt="Ruana artesanal">
-      <h3>Ruana Blanca</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/ruananegra.jpg" alt="Ruana artesanal">
-      <h3>Ruana Negra</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/sacolana.jpg" alt="Ruana artesanal">
-      <h3>Ruana pico</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/Sacocrochet.jpg" alt="Ruana artesanal">
-      <h3>Saco Crochet</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/ruanablancatresrayas.jpg" alt="Ruana artesanal">
-      <h3>Ruana Blanca tres rayas</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/ruanaconcuello.jpg" alt="Ruana artesanal">
-      <h3>Ruana Con cuello</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/poncho.jpg" alt="Ruana artesanal">
-      <h3>Poncho</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/ruana1.jpg" alt="Ruana artesanal">
-      <h3>Ruana Clásica</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/ruana1.jpg" alt="Ruana artesanal">
-      <h3>Ruana Clásica</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/ruana1.jpg" alt="Ruana artesanal">
-      <h3>Ruana Clásica</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/ruana1.jpg" alt="Ruana artesanal">
-      <h3>Ruana Clásica</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/ruana1.jpg" alt="Ruana artesanal">
-      <h3>Ruana Clásica</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/ruana1.jpg" alt="Ruana artesanal">
-      <h3>Ruana Clásica</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/ruana1.jpg" alt="Ruana artesanal">
-      <h3>Ruana Clásica</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/ruana1.jpg" alt="Ruana artesanal">
-      <h3>Ruana Clásica</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/ruana1.jpg" alt="Ruana artesanal">
-      <h3>Ruana Clásica</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/ruana1.jpg" alt="Ruana artesanal">
-      <h3>Ruana Clásica</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/ruana1.jpg" alt="Ruana artesanal">
-      <h3>Ruana Clásica</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-        <div class="producto">
-      <img src="imagenes/ruana1.jpg" alt="Ruana artesanal">
-      <h3>Ruana Clásica</h3>
-      <p>$120.000</p>
-      <div class="cantidad">
-        <button class="btn-menos">-</button>
-        <span class="contador">1</span>
-        <button class="btn-mas">+</button>
-      </div>
-      <button class="btn-agregar">Agregar</button>
-    </div>
-  </main>
-
-  <script src="scripts/productos.js"></script>
-  <footer class="footer">
-  <div class="footer-container">
-    <div class="footer-section">
-      <h3>Artesanías Maru-Lana</h3>
-      <div class="social-icons">
-        <a href="#"><h3>Facebook</h3></a>
-        <a href="#"><h3>Instagram</h3></a>
-        <a href="#"><h3>Tik Tok</h3></a>
-        <a href="#"><h3>Linkedin</h3></a>
-      </div>
-    </div>
-    <div class="footer-section">
-      <h4>Nuestros Productos</h4>
-      <p>Bufandas</p>
-      <p>Gorros</p>
-      <p>Chales</p>
-    </div>
-    <div class="footer-section">
-      <h4>Sobre Nosotros</h4>
-      <p>Guantes</p>
-      <p>Mantas</p>
-      <p>Cobijas</p>
-    </div>
-    <div class="footer-section">
-      <h4>Contacto</h4>
-      <p>Nuestra Misión</p>
-      <p>Nuestros Valores</p>
-      <p>Preguntas Frecuentes</p>
-    </div>
-  </div>
-</footer>
+    <script src="scripts/navbar-ui.js"></script>
+    <script src="scripts/productos.js"></script>
 </body>
 </html>

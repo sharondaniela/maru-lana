@@ -31,32 +31,96 @@ body {
   font-weight: bold;
 }
 
-.contenedor-productos {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr); /* Móvil por defecto */
-  gap: 20px;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-@media (min-width: 576px) {
-  .contenedor-productos {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.slider-container {
+    position: relative;
+    width: 100%; /* O el ancho que desees */
+    max-width: 1200px; /* Ancho máximo para el carrusel */
+    margin: 20px auto; /* Centrar y dar espacio */
+    overflow: hidden; /* Oculta los slides que están fuera de vista */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-@media (min-width: 768px) {
-  .contenedor-productos {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.slider-wrapper {
+    display: flex; /* Para colocar los slides uno al lado del otro */
+    transition: transform 0.5s ease-in-out; /* Animación de desplazamiento */
+    width: 100%; /* Ajusta el ancho para que los slides ocupen el 100% de su contenedor */
 }
 
-@media (min-width: 992px) {
-  .contenedor-productos {
-    grid-template-columns: repeat(4, 1fr);
-  }
+.slider-slide {
+    min-width: 100%; /* Cada slide ocupa el 100% del ancho del wrapper visible */
+    flex-shrink: 0; /* Evita que los slides se encojan */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Color de fondo por si la imagen no carga */
 }
 
+.slider-slide img {
+    width: 100%;
+    height: auto; /* Mantener la proporción */
+    display: block; /* Eliminar espacio extra debajo de la imagen */
+    max-height: 400px; /* O la altura máxima que desees para tus imágenes del slider */
+    object-fit: cover; /* Recortar la imagen para que cubra el contenedor */
+}
+
+.slider-slide .caption {
+    position: absolute;
+    bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+/* Estilos para los puntos de navegación */
+.slider-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px; /* Espacio entre los puntos */
+}
+
+.slider-dots .dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.slider-dots .dot.active {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Opcional: Estilos para botones de navegación manual (si los añades) */
+
+.prev-slide, .next-slide {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.5em;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.prev-slide { left: 10px; }
+.next-slide { right: 10px; }
+
+.prev-slide:hover, .next-slide:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
 
 .producto {
   border: 1px solid #ccc;

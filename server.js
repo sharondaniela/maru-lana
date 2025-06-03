@@ -1,68 +1,80 @@
 const express = require('express');
+const fs = require('fs');
 const path = require('path');
-const bodyParser = require('body-parser'); 
+const bodyParser = require('body-parser');
 const app = express();
 
+// Middlewares
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public')); // Asegúrate de que tu carpeta 'public' exista y contenga tus HTML, CSS, JS
 
-app.use(bodyParser.json()); 
-app.use(express.static(path.join(__dirname, 'public')));
+// Base de datos temporal (archivo JSON)
+const DB_PATH = path.join(__dirname, 'database.json');
+console.log('Ruta de la base de datos:', DB_PATH); // Esto te dirá dónde el servidor busca/crea el JSON
 
+// Inicializar DB si no existe
+if (!fs.existsSync(DB_PATH)) {
+    fs.writeFileSync(DB_PATH, JSON.stringify({ users: [] }, null, 2)); // Añadido null, 2 para formato legible
+    console.log('database.json creado con éxito.');
+} else {
+    console.log('database.json ya existe.');
+}
 
-app.get('/api', (req, res) => {
-    res.json({ mensaje: "¡Backend funcionando!" });
-});
-
-
-app.get('/test', (req, res) => {
-    res.send(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Prueba Backend</title>
-            <style>
-                body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-                h1 { color: #2c3e50; }
-                p { color: #7f8c8d; }
-            </style>
-        </head>
-        <body>
-            <h1>¡Backend activo! ✅</h1>
-            <p>Fecha del servidor: ${new Date()}</p>
-            <p>Prueba también <a href="/api">/api</a></p>
-        </body>
-        </html>
-    `);
-});
-
+// Rutas
 app.post('/registro', (req, res) => {
     const { nombre, email, password } = req.body;
-    
+    let db;
 
-    if (!nombre || !email || !password) {
-        return res.status(400).json({ error: "Todos los campos son requeridos" });
+    try {
+        db = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
+        console.log('Base de datos leída para registro:', db);
+    } catch (readError) {
+        console.error('Error al leer database.json en registro:', readError);
+        return res.status(500).json({ error: 'Error interno del servidor al leer la DB.' });
     }
 
-    console.log('Datos recibidos:', { nombre, email, password });
-    res.json({ 
-        success: true,
-        message: "Usuario registrado correctamente",
-        user: { nombre, email } 
-    });
+    // Validar si el usuario ya existe
+    if (db.users.some(user => user.email === email)) {
+        console.log('Intento de registro de usuario existente:', email);
+        return res.status(400).json({ error: 'El usuario ya existe' });
+    }
+
+    // Guardar nuevo usuario (¡En producción usa bcrypt para la contraseña!)
+    db.users.push({ nombre, email, password });
+    console.log('Nuevo estado de la DB antes de escribir:', db);
+
+    try {
+        fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2)); // Añadido null, 2 para formato legible
+        console.log('Usuario registrado con éxito y database.json actualizado.');
+        // ¡Esta es la línea clave que debe enviar el 'redirect'!
+        res.json({ success: true, redirect: '/login.html' }); 
+    } catch (writeError) {
+        console.error('Error al escribir en database.json:', writeError);
+        return res.status(500).json({ error: 'Error interno del servidor al guardar en la DB.' });
+    }
 });
 
-app.use((req, res) => {
-    res.status(404).send(`
-        <h1>404 - Ruta no encontrada</h1>
-        <p>La ruta ${req.url} no existe en este servidor</p>
-    `);
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+    let db;
+
+    try {
+        db = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
+        console.log('Intento de login, leyendo DB:', db);
+    } catch (readError) {
+        console.error('Error al leer database.json durante el login:', readError);
+        return res.status(500).json({ error: 'Error interno del servidor al leer la DB.' });
+    }
+
+    const user = db.users.find(user => user.email === email && user.password === password);
+
+    if (!user) {
+        console.log('Intento de login fallido: credenciales incorrectas para', email);
+        return res.status(401).json({ error: 'Credenciales incorrectas' });
+    }
+    console.log('Login exitoso para usuario:', user.nombre);
+    res.json({ success: true, redirect: '/index.html', user: { nombre: user.nombre } });
 });
 
-
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`\n✅ Servidor corriendo en http://localhost:${PORT}`);
-    console.log(`Rutas disponibles:`);
-    console.log(`- GET  /api       (API de prueba)`);
-    console.log(`- GET  /test      (Página HTML de prueba)`);
-    console.log(`- POST /registro  (Registro de usuarios)\n`);
-});
+app.listen(3000, () => console.log('Servidor en http://localhost:3000'));
