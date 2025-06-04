@@ -57,3 +57,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Lógica existente de navbar-ui.js (si tienes alguna)
+    // Por ejemplo, para manejar el "Hola, usuario" y "Cerrar Sesión" si están basados en JS
+    actualizarNumeroCarritoEnNavbar(); // Llama a la función al cargar el DOM
+});
+
+function actualizarNumeroCarritoEnNavbar() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+    // Asumiendo que tu enlace al carrito es el que tiene href="carrito.html"
+    const carritoIcon = document.querySelector('.menu li a[href="carrito.html"]'); 
+    
+    if (carritoIcon) {
+        let itemCountSpan = carritoIcon.querySelector('.item-count');
+        if (!itemCountSpan) {
+            itemCountSpan = document.createElement('span');
+            itemCountSpan.classList.add('item-count');
+            // Puedes colocar estos estilos en tu navbar.css si prefieres
+            itemCountSpan.style.backgroundColor = 'red';
+            itemCountSpan.style.color = 'white';
+            itemCountSpan.style.borderRadius = '50%';
+            itemCountSpan.style.padding = '2px 6px';
+            itemCountSpan.style.marginLeft = '5px';
+            itemCountSpan.style.verticalAlign = 'super'; // Para alinear con el texto del enlace
+            carritoIcon.appendChild(itemCountSpan);
+        }
+        itemCountSpan.textContent = totalItems > 0 ? totalItems : '';
+        itemCountSpan.style.display = totalItems > 0 ? 'inline-block' : 'none';
+    }
+}

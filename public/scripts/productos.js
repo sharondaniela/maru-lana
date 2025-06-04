@@ -1,3 +1,5 @@
+// public/scripts/productos.js
+
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.producto').forEach(producto => {
         const btnMenos = producto.querySelector('.btn-menos');
@@ -19,6 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const btnAgregar = producto.querySelector('.btn-agregar');
         btnAgregar.addEventListener('click', () => {
+            // *** NUEVA LÓGICA: Verificar si el usuario está logueado ***
+            if (!isUserLoggedIn()) {
+                alert('Debes iniciar sesión para agregar productos al carrito.');
+                // Opcional: Redirigir a la página de login
+                window.location.href = 'login.html';
+                return; // Detener la ejecución si el usuario no está logueado
+            }
+            // *** Fin de la nueva lógica ***
+
             const nombre = producto.querySelector('h3').textContent;
             const precioTexto = producto.querySelector('p').textContent;
             const precio = parseFloat(precioTexto.replace('$', '').trim());
@@ -28,6 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
             agregarProductoAlCarrito({ nombre, precio, imagenSrc, cantidad: cantidadProducto });
         });
     });
+
+    // *** NUEVA FUNCIÓN: Para verificar el estado de login ***
+    // Esta función verifica si 'loggedInUser' existe en localStorage
+    function isUserLoggedIn() {
+        return localStorage.getItem('loggedInUser') !== null;
+    }
+    // *** Fin de la nueva función ***
 
     function agregarProductoAlCarrito(producto) {
         let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -42,9 +60,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         localStorage.setItem('carrito', JSON.stringify(carrito));
         alert(`${producto.nombre} (x${producto.cantidad}) agregado al carrito.`);
+        // Nota: actualizarNumeroCarritoEnNavbar() debe estar definida globalmente (ej. en navbar-ui.js)
+        // ya que la movimos allí para que funcione en todas las páginas.
+        // Si no la moviste, déjala aquí, pero lo ideal es que esté centralizada.
+        // Si aún la tienes aquí y en navbar-ui.js, asegúrate de que no haya duplicidad.
         actualizarNumeroCarritoEnNavbar();
     }
 
+    // Nota: La función actualizarNumeroCarritoEnNavbar() y su llamada inicial
+    // deberían haber sido movidas a navbar-ui.js para que funcione en todas las páginas.
+    // Si la mantienes aquí, solo funcionará en productos.html.
+    // Eliminar la definición aquí si ya la tienes en navbar-ui.js:
+    /*
     function actualizarNumeroCarritoEnNavbar() {
         const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
@@ -66,7 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     actualizarNumeroCarritoEnNavbar();
+    */
 
+    // Lógica del carrusel (sin cambios)
     const sliderWrapper = document.querySelector('.slider-wrapper');
     const slides = document.querySelectorAll('.slider-slide');
     const dotsContainer = document.querySelector('.slider-dots');
@@ -75,10 +104,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let slideInterval;
 
     function showSlide(index) {
-        if (!sliderWrapper) return; // Añadir verificación si el slider no existe
+        if (!sliderWrapper) return;
         sliderWrapper.style.transform = `translateX(-${index * 100}%)`;
 
-        if (dots) { // Verificar si los puntos existen
+        if (dots) {
             dots.forEach((dot, i) => {
                 if (i === index) {
                     dot.classList.add('active');
@@ -95,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startSlider() {
-        if (!slides || slides.length === 0) return; // No iniciar si no hay slides
+        if (!slides || slides.length === 0) return;
         if (slideInterval) {
             clearInterval(slideInterval);
         }

@@ -4,14 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (loginForm) {
         loginForm.addEventListener('submit', async (event) => {
-            event.preventDefault(); // <-- ¡Esta línea es clave! Previene el envío por defecto del formulario.
+            event.preventDefault();
 
             const email = loginForm.querySelector('input[name="email"]').value;
             const password = loginForm.querySelector('input[name="password"]').value;
 
-            // ... el resto de tu código fetch y redirección ...
             try {
-                const response = await fetch('/login', { // <-- Asegúrate que sea '/login' aquí
+                const response = await fetch('/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -23,12 +22,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (response.ok) {
                     alert('Inicio de sesión exitoso. ¡Bienvenido!');
+                    // *** MODIFICACIÓN AQUÍ: Establecer loggedInUser en localStorage ***
                     if (data.user && data.user.nombre) {
-                        localStorage.setItem('loggedInUser', data.user.nombre);
+                        localStorage.setItem('loggedInUser', data.user.nombre); // Guarda el nombre del usuario
+                    } else {
+                        // Si por alguna razón no viene el nombre, guarda un booleano
+                        localStorage.setItem('loggedInUser', 'true');
                     }
-                    window.location.href = data.redirect; // Redirige a /index.html
+                    // *** Fin de modificación ***
+
+                    window.location.href = data.redirect; // Redirige a /index.html (o la ruta que venga del servidor)
                 } else {
-                    alert('Error al iniciar sesión: ' + data.error);
+                    // Si el servidor envía un error específico, úsalo; de lo contrario, un mensaje genérico.
+                    alert('Error al iniciar sesión: ' + (data.error || 'Credenciales incorrectas.'));
                 }
             } catch (error) {
                 console.error('Error al enviar el formulario de login:', error);
