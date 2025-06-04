@@ -6,33 +6,7 @@ body {
   color: #fff;
 }
 
-/* Navbar */
-.navbar {
-  background-color: #000;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1em 2em;
-}
 
-.logo {
-  margin: 0;
-}
-
-.menu {
-  list-style: none;
-  display: flex;
-  gap: 1.5em;
-  margin: 0;
-  padding: 0;
-}
-
-.menu li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
 
 /* Contenedor del formulario */
 .registro-container {

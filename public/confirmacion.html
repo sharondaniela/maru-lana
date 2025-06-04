@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Compra</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/confirmacion.css"> </head>
+<body>
+    <header class="navbar">
+        <h1 class="logo">Tienda Ruanas Maru Lana</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="confirmacion-container">
+            <h2>Confirmar Tu Pedido</h2>
+
+            <div id="resumen-productos-confirmacion">
+                <p>Cargando resumen del pedido...</p>
+            </div>
+
+            <div class="total-confirmacion">
+                <h3>Total del Pedido: <span id="total-pedido"></span></h3>
+            </div>
+
+            <div class="botones-confirmacion">
+                <button id="btn-volver-carrito" class="btn-secundario">Volver al Carrito</button>
+                <button id="btn-confirmar-compra" class="btn-primario">Confirmar Compra</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="scripts/navbar-ui.js"></script>
+    <script src="scripts/confirmacion.js"></script> </body>
+</html>

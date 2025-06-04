@@ -1,68 +1,42 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.navbar {
-  background-color: #000;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1em 2em;
-}
 
-.logo {
-  margin: 0;
-}
-
-.menu {
-  list-style: none;
-  display: flex;
-  gap: 1.5em;
-  margin: 0;
-  padding: 0;
-}
-
-.menu li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
 
 .slider-container {
     position: relative;
-    width: 100%; /* O el ancho que desees */
-    max-width: 1200px; /* Ancho máximo para el carrusel */
-    margin: 20px auto; /* Centrar y dar espacio */
-    overflow: hidden; /* Oculta los slides que están fuera de vista */
-    border-radius: 8px; /* Bordes redondeados */
+    width: 100%;
+    max-width: 1200px; 
+    margin: 20px auto; 
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .slider-wrapper {
-    display: flex; /* Para colocar los slides uno al lado del otro */
-    transition: transform 0.5s ease-in-out; /* Animación de desplazamiento */
-    width: 100%; /* Ajusta el ancho para que los slides ocupen el 100% de su contenedor */
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
 }
 
 .slider-slide {
-    min-width: 100%; /* Cada slide ocupa el 100% del ancho del wrapper visible */
-    flex-shrink: 0; /* Evita que los slides se encojan */
+    min-width: 100%;
+    flex-shrink: 0;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0; /* Color de fondo por si la imagen no carga */
+    background-color: #f0f0f0;
 }
 
 .slider-slide img {
     width: 100%;
-    height: auto; /* Mantener la proporción */
-    display: block; /* Eliminar espacio extra debajo de la imagen */
-    max-height: 400px; /* O la altura máxima que desees para tus imágenes del slider */
-    object-fit: cover; /* Recortar la imagen para que cubra el contenedor */
+    height: auto;
+    display: block;
+    max-height: 400px;
+    object-fit: cover;
 }
 
 .slider-slide .caption {
@@ -76,14 +50,13 @@ body {
     text-align: center;
 }
 
-/* Estilos para los puntos de navegación */
 .slider-dots {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 8px; /* Espacio entre los puntos */
+    gap: 8px;
 }
 
 .slider-dots .dot {
@@ -99,181 +72,157 @@ body {
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-/* Opcional: Estilos para botones de navegación manual (si los añades) */
 
-.prev-slide, .next-slide {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 1.5em;
-    border-radius: 50%;
-    z-index: 10;
+.productos {
+    max-width: 1200px; 
+    margin: 40px auto; 
+    padding: 0 20px; 
 }
 
-.prev-slide { left: 10px; }
-.next-slide { right: 10px; }
+.productos h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 2em;
+}
 
-.prev-slide:hover, .next-slide:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+.contenedor-productos {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px; 
+    justify-content: center; 
 }
 
 .producto {
-  border: 1px solid #ccc;
-  padding: 1em;
-  border-radius: 10px;
-  text-align: center;
-  background: #fff;
+    border: 1px solid #ddd;
+    padding: 1.5em;
+    border-radius: 10px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .producto img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 8px;
+    width: 100%;
+    height: 200px; 
+    object-fit: cover; 
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.producto h3 {
+    font-size: 1.4em;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.producto p {
+    font-size: 1.1em;
+    color: #555;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
 .cantidad {
-  margin: 0.8em 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.8em;
+    margin: 1em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8em;
 }
 
 .btn-menos,
 .btn-mas {
-  background-color: #ddd;
-  border: none;
-  padding: 0.5em;
-  font-size: 1em;
-  cursor: pointer;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+    background-color: #ddd;
+    border: none;
+    padding: 0.5em;
+    font-size: 1em;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.btn-menos:hover,
+.btn-mas:hover {
+    background-color: #ccc;
 }
 
 .contador {
-  font-size: 1.2em;
+    font-size: 1.2em;
+    min-width: 25px; 
+    text-align: center;
 }
 
 .btn-agregar {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 0.6em 1.2em;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.8em 1.5em;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    margin-top: 15px;
 }
 
 .btn-agregar:hover {
-  background-color: #45a049;
-}
-.carrusel-scroll {
-  overflow-x: auto;
-  white-space: nowrap;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  margin: 20px auto;
-  width: 90%;
-  scroll-snap-type: x mandatory;
-}
-
-.slide-scroll {
-  display: flex;
-  gap: 10px; /* antes era 20px, ahora es más estrecho */
-}
-
-
-.item {
-  display: flex;
-  align-items: center;
-  scroll-snap-align: center;
-  background: #f9f9f9;
-  border-radius: 10px;
-  padding: 20px;
-  width: 100%;
-  max-width: 550px; /* reduce el ancho total de cada item */
-  box-sizing: border-box;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-
-.item img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  flex-shrink: 0;
-}
-.descripcion {
-  margin-left: 15px;
-  max-width: 250px; /* antes era 400px */
-}
-
-
-.descripcion h2 {
-  color: #4CAF50;
-  margin: 0;
-  font-size: 1.3em;
-}
-
-.descripcion p {
-  margin-top: 0.5em;
-  font-size: 1em;
-  color: #555;
+    background-color: #45a049;
 }
 
 
 .footer {
-  background-color: #f4f4f4;
-  padding: 3em 1em;
-  margin-top: 3em;
+    background-color: #f4f4f4;
+    padding: 3em 1em;
+    margin-top: 3em;
 }
 
 .footer-container {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 2em;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2em;
 }
 
 .footer-section {
-  flex: 1;
-  min-width: 180px;
+    flex: 1;
+    min-width: 180px;
 }
 
 .footer-section h3, .footer-section h4 {
-  margin-bottom: 0.5em;
-  color: #333;
+    margin-bottom: 0.5em;
+    color: #333;
 }
 
 .footer-section p {
-  margin: 0.3em 0;
-  color: #555;
+    margin: 0.3em 0;
+    color: #555;
 }
 
 .social-icons a {
-  margin-right: 10px;
-  display: inline-block;
+    margin-right: 10px;
+    display: inline-block;
 }
 
 .social-icons img {
-  width: 24px;
-  height: 24px;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
+    width: 24px;
+    height: 24px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
 }
 
 .social-icons img:hover {
-  filter: grayscale(0%);
+    filter: grayscale(0%);
 }

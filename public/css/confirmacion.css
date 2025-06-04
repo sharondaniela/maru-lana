@@ -1,0 +1,124 @@
+/* Estilos para la página de confirmación de compra */
+
+
+.confirmacion-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.confirmacion-container h2 {
+    color: #4CAF50;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+}
+
+#resumen-productos-confirmacion {
+    margin-bottom: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.producto-confirmacion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 1.1em;
+}
+
+.producto-confirmacion:last-child {
+    border-bottom: none;
+}
+
+.producto-confirmacion img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.producto-info {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.producto-info span {
+    margin-right: 10px;
+}
+
+.producto-nombre {
+    font-weight: bold;
+    color: #333;
+}
+
+.producto-cantidad {
+    color: #777;
+}
+
+.producto-precio-subtotal {
+    font-weight: bold;
+    color: #555;
+    white-space: nowrap; /* Evita que el precio se rompa en varias líneas */
+}
+
+
+.total-confirmacion {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px solid #4CAF50;
+}
+
+.total-confirmacion h3 {
+    font-size: 1.8em;
+    color: #333;
+}
+
+#total-pedido {
+    color: #4CAF50;
+}
+
+.botones-confirmacion {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-primario, .btn-secundario {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primario {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-primario:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+.btn-secundario {
+    background-color: #f0f0f0;
+    color: #555;
+    border: 1px solid #ccc;
+}
+
+.btn-secundario:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}

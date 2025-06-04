@@ -1,0 +1,47 @@
+.navbar {
+    background-color: #000; /* Fondo negro */
+    color: white; /* Color de texto blanco */
+    display: flex; /* Habilitar Flexbox */
+    justify-content: space-between; /* Alinear elementos a los extremos */
+    align-items: center; /* Centrar verticalmente los elementos */
+    padding: 1em 2em; /* Espaciado interno */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra sutil para el navbar */
+}
+
+.logo {
+    margin: 0;
+    font-size: 1.8em; /* Tamaño del logo */
+    color: white; /* Color del texto del logo */
+    text-decoration: none; /* Quitar subrayado si es un enlace */
+}
+
+.menu {
+    list-style: none; /* Quitar viñetas de la lista */
+    display: flex; /* Habilitar Flexbox para los ítems del menú */
+    gap: 1.5em; /* Espacio entre los ítems del menú */
+    margin: 0;
+    padding: 0;
+}
+
+.menu li a {
+    color: white; /* Color de los enlaces del menú */
+    text-decoration: none; /* Quitar subrayado de los enlaces */
+    font-weight: bold; /* Texto en negrita */
+    transition: color 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+.menu li a:hover {
+    color: #4CAF50; /* Color al pasar el ratón */
+}
+
+/* Estilos para el contador de ítems en el carrito (si lo usas con un span.item-count) */
+.menu li a .item-count {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    margin-left: 5px;
+    font-size: 0.8em;
+    vertical-align: super;
+    display: inline-block; /* Asegura que el span se muestre correctamente */
+}
