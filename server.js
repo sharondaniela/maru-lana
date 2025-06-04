@@ -7,15 +7,24 @@ const app = express();
 // Middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public')); // Asegúrate de que tu carpeta 'public' exista y contenga tus HTML, CSS, JS
+
+// *** Importante para Render: Servir la carpeta 'public' correctamente ***
+// __dirname se refiere al directorio del archivo server.js
+// path.join asegura que la ruta sea correcta en cualquier sistema operativo
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Base de datos temporal (archivo JSON)
+// Render generalmente permite escribir en el sistema de archivos, pero para bases de datos persistentes
+// se recomienda una base de datos externa o un servicio de datos de Render.
+// Para este tipo de base de datos simple (database.json), funcionará.
 const DB_PATH = path.join(__dirname, 'database.json');
-console.log('Ruta de la base de datos:', DB_PATH); // Esto te dirá dónde el servidor busca/crea el JSON
+console.log('Ruta de la base de datos:', DB_PATH);
 
 // Inicializar DB si no existe
+// Render puede recrear el sistema de archivos en cada despliegue,
+// por lo que este archivo podría ser volátil.
 if (!fs.existsSync(DB_PATH)) {
-    fs.writeFileSync(DB_PATH, JSON.stringify({ users: [] }, null, 2)); // Añadido null, 2 para formato legible
+    fs.writeFileSync(DB_PATH, JSON.stringify({ users: [] }, null, 2));
     console.log('database.json creado con éxito.');
 } else {
     console.log('database.json ya existe.');
@@ -40,15 +49,14 @@ app.post('/registro', (req, res) => {
         return res.status(400).json({ error: 'El usuario ya existe' });
     }
 
-    // Guardar nuevo usuario (¡En producción usa bcrypt para la contraseña!)
+    // Guardar nuevo usuario
     db.users.push({ nombre, email, password });
     console.log('Nuevo estado de la DB antes de escribir:', db);
 
     try {
-        fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2)); // Añadido null, 2 para formato legible
+        fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2));
         console.log('Usuario registrado con éxito y database.json actualizado.');
-        // ¡Esta es la línea clave que debe enviar el 'redirect'!
-        res.json({ success: true, redirect: '/login.html' }); 
+        res.json({ success: true, redirect: '/login.html' });
     } catch (writeError) {
         console.error('Error al escribir en database.json:', writeError);
         return res.status(500).json({ error: 'Error interno del servidor al guardar en la DB.' });
@@ -77,4 +85,6 @@ app.post('/login', (req, res) => {
     res.json({ success: true, redirect: '/index.html', user: { nombre: user.nombre } });
 });
 
-app.listen(3000, () => console.log('Servidor en http://localhost:3000'));
+// *** CAMBIO PRINCIPAL PARA RENDER: Usar process.env.PORT ***
+const PORT = process.env.PORT || 3000; // Render provee un puerto en esta variable de entorno
+app.listen(PORT, () => console.log(`Servidor en el puerto ${PORT}`));
