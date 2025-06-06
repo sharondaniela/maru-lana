@@ -1,36 +1,36 @@
 /* Estilos para el Navbar */
 .navbar {
-    background-color: #2c3e50; /* Fondo azul oscuro/grisáceo */
+    background-color: #2c3e50;
     color: white;
-    display: flex;
-    justify-content: space-between; /* Alinea el logo a la izquierda y el menú a la derecha */
-    align-items: center; /* Centra verticalmente los elementos */
-    padding: 1em 2.5em; /* Más espaciado a los lados */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada para profundidad */
-    position: sticky; /* Navbar pegajoso en la parte superior */
+    display: flex; /* Asegura que el navbar sea un contenedor flex */
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2.5em;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: sticky;
     top: 0;
-    z-index: 1000; /* Asegura que esté sobre otros elementos */
-    border-bottom-left-radius: 10px; /* Bordes redondeados en la parte inferior */
+    z-index: 1000;
+    border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 
 .logo {
     margin: 0;
-    font-size: 2.2em; /* Tamaño de fuente más grande para el logo */
-    color: #4CAF50; /* Color verde vibrante para el logo */
+    font-size: 2.2em;
+    color: #4CAF50;
     text-decoration: none;
-    font-weight: 700; /* Negrita para el logo */
+    font-weight: 700;
     transition: color 0.3s ease;
 }
 
 .logo:hover {
-    color: #a2d2a5; /* Un verde más claro al pasar el ratón */
+    color: #a2d2a5;
 }
 
 .menu {
-    list-style: none; /* Quita las viñetas de la lista */
-    display: flex; /* Pone los elementos del menú en línea */
-    gap: 2em; /* Más espacio entre los ítems del menú */
+    list-style: none;
+    display: flex; /* Asegura que el menú sea un contenedor flex */
+    gap: 2em;
     margin: 0;
     padding: 0;
 }
@@ -38,83 +38,85 @@
 .menu li a {
     color: white;
     text-decoration: none;
-    font-weight: 600; /* Ligeramente más negrita */
-    font-size: 1.1em; /* Tamaño de fuente ligeramente más grande */
-    padding: 0.5em 0.8em; /* Añadir padding para hacer la zona de clic más grande */
-    border-radius: 5px; /* Bordes ligeramente redondeados en los enlaces */
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 0.5em 0.8em;
+    border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .menu li a:hover {
-    background-color: rgba(76, 175, 80, 0.2); /* Fondo verde semitransparente al pasar el ratón */
-    color: #4CAF50; /* Color verde en el texto al pasar el ratón */
-    transform: translateY(-2px); /* Efecto de elevación sutil */
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #4CAF50;
+    transform: translateY(-2px);
 }
 
-/* Estilos para el contador de ítems en el carrito */
 .menu li a .item-count {
-    background-color: #e74c3c; /* Rojo vibrante */
+    background-color: #e74c3c;
     color: white;
-    border-radius: 50%; /* Completamente redondo */
-    padding: 3px 8px; /* Más padding para que se vea mejor */
-    margin-left: 8px; /* Más margen a la izquierda */
-    font-size: 0.85em; /* Tamaño ligeramente más grande */
+    border-radius: 50%;
+    padding: 3px 8px;
+    margin-left: 8px;
+    font-size: 0.85em;
     font-weight: 700;
-    vertical-align: middle; /* Alinear verticalmente con el texto del enlace */
-    display: inline-block; /* Asegura que el span se muestre correctamente */
-    min-width: 20px; /* Asegura un tamaño mínimo para un solo dígito */
-    text-align: center; /* Centra el número */
+    vertical-align: middle;
+    display: inline-block;
+    min-width: 20px;
+    text-align: center;
 }
 
-/* Media Queries para responsividad del Navbar */
-@media (max-width: 900px) {
-    .navbar {
-        flex-direction: column; /* Apila logo y menú en pantallas más pequeñas */
-        align-items: center; /* CENTRA los elementos apilados horizontalmente */
-        padding: 1.5em 1em; /* Ajusta el padding horizontal para pantallas pequeñas */
-        text-align: center; /* Centra el texto del logo si es muy largo */
-    }
+/* HE ELIMINADO LAS MEDIA QUERIES QUE CAMBIABAN A FLEX-DIRECTION: COLUMN
+   Si deseas que el navbar se mantenga horizontal en móvil,
+   NO debemos cambiar su dirección a columna.
+   Si necesitas un "menú hamburguesa" o alguna otra adaptación
+   para el móvil, entonces se necesitaría JavaScript y un diseño
+   diferente para el menú en esa media query, pero para mantener
+   la horizontalidad, las reglas de columna se eliminan.
+*/
 
-    .logo {
-        margin-bottom: 15px; /* Espacio debajo del logo */
-        width: 100%; /* Asegura que el logo ocupe todo el ancho para centrado de texto */
-        text-align: center; /* Centra el texto del logo */
-    }
-
-    .menu {
-        flex-direction: column; /* Ítems del menú apilados */
-        gap: 0.8em; /* Menos espacio entre ítems apilados */
-        width: 100%; /* El menú ocupa todo el ancho disponible */
-        align-items: center; /* CENTRA los ítems de la lista dentro del menú */
-        padding: 0; /* Asegura que no haya padding extra aquí */
-    }
-
-    .menu li {
-        width: 100%; /* Hace que cada ítem de lista ocupe el 100% para un centrado fácil */
-        text-align: center; /* Centra el texto dentro del li */
-    }
-
-    .menu li a {
-        width: calc(100% - 1.6em); /* Mantén esto para el padding interno */
-        padding: 0.8em 0.8em;
-        display: block; /* Para que el padding y width funcionen bien */
-        text-align: center; /* Centra el texto dentro del enlace */
-    }
+/*
+   Aseguramos que el navbar y el menú siempre sean row (horizontal)
+   a menos que haya una regla más específica en otro lugar.
+   Si quieres que el menú envuelva (wrap) en varias líneas si no hay espacio,
+   puedes añadir `flex-wrap: wrap;` a `.navbar` y `.menu`.
+*/
+.navbar {
+    flex-wrap: wrap; /* Permite que los elementos envuelvan si no hay espacio */
 }
 
+.menu {
+    flex-wrap: wrap; /* Permite que los elementos envuelvan si no hay espacio */
+    justify-content: flex-end; /* Alinea los ítems del menú a la derecha si envuelven */
+}
+
+/* Pequeños ajustes para pantallas muy pequeñas si se mantienen horizontal */
 @media (max-width: 480px) {
     .navbar {
-        padding: 1em 0.5em; /* Menos padding en pantallas muy pequeñas */
-        border-bottom-left-radius: 0; /* Quitar redondeo en móviles extremos */
+        padding: 1em 0.5em;
+        border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
+        /* Puedes ajustar el justify-content aquí si el logo y el menú se aprietan mucho */
+        /* Por ejemplo, para centrar todo si es muy estrecho: */
+        /* justify-content: center; */
     }
 
     .logo {
-        font-size: 1.6em; /* Tamaño de fuente más pequeño para el logo en móviles muy pequeños */
+        font-size: 1.6em;
+        /* Puedes reducir el margin-bottom si ya no se apilan */
+        margin-bottom: 0.5em; 
+        text-align: center; /* Asegura el logo centrado si el navbar es column */
     }
     
+    .menu {
+        /* Si quieres que se vea el menú en línea y se vea bien, quita el width: 100% que tenías*/
+        /* y ajusta el tamaño de la fuente si es necesario */
+        gap: 0.5em; /* Reduce el espacio entre ítems del menú */
+        justify-content: center; /* Centra los ítems del menú horizontalmente */
+    }
+
     .menu li a {
-        font-size: 1em; /* Ajuste el tamaño de fuente para enlaces en móviles pequeños */
-        padding: 0.7em 0.5em; /* Ajusta el padding de los enlaces en móviles pequeños */
+        font-size: 0.9em; /* Reduce el tamaño de la fuente para que quepan */
+        padding: 0.6em 0.4em;
+        /* width: auto; // Quitar el width: 100% que tenían en la versión anterior */
     }
 }
