@@ -70,35 +70,51 @@
 @media (max-width: 900px) {
     .navbar {
         flex-direction: column; /* Apila logo y menú en pantallas más pequeñas */
-        align-items: flex-start; /* Alinea a la izquierda al apilar */
-        padding: 1.5em 2em;
+        align-items: center; /* CENTRA los elementos apilados horizontalmente */
+        padding: 1.5em 1em; /* Ajusta el padding horizontal para pantallas pequeñas */
+        text-align: center; /* Centra el texto del logo si es muy largo */
     }
 
     .logo {
         margin-bottom: 15px; /* Espacio debajo del logo */
+        width: 100%; /* Asegura que el logo ocupe todo el ancho para centrado de texto */
+        text-align: center; /* Centra el texto del logo */
     }
 
     .menu {
         flex-direction: column; /* Ítems del menú apilados */
         gap: 0.8em; /* Menos espacio entre ítems apilados */
         width: 100%; /* El menú ocupa todo el ancho disponible */
-        align-items: flex-start; /* Alinea los ítems a la izquierda */
+        align-items: center; /* CENTRA los ítems de la lista dentro del menú */
+        padding: 0; /* Asegura que no haya padding extra aquí */
+    }
+
+    .menu li {
+        width: 100%; /* Hace que cada ítem de lista ocupe el 100% para un centrado fácil */
+        text-align: center; /* Centra el texto dentro del li */
     }
 
     .menu li a {
-        width: calc(100% - 1.6em); /* Hace que el enlace ocupe casi todo el ancho para un mejor clic */
+        width: calc(100% - 1.6em); /* Mantén esto para el padding interno */
         padding: 0.8em 0.8em;
+        display: block; /* Para que el padding y width funcionen bien */
+        text-align: center; /* Centra el texto dentro del enlace */
     }
 }
 
 @media (max-width: 480px) {
     .navbar {
-        padding: 1em 1.5em; /* Menos padding en pantallas muy pequeñas */
+        padding: 1em 0.5em; /* Menos padding en pantallas muy pequeñas */
         border-bottom-left-radius: 0; /* Quitar redondeo en móviles extremos */
         border-bottom-right-radius: 0;
     }
 
     .logo {
-        font-size: 1.8em; /* Tamaño de fuente más pequeño para el logo */
+        font-size: 1.6em; /* Tamaño de fuente más pequeño para el logo en móviles muy pequeños */
+    }
+    
+    .menu li a {
+        font-size: 1em; /* Ajuste el tamaño de fuente para enlaces en móviles pequeños */
+        padding: 0.7em 0.5em; /* Ajusta el padding de los enlaces en móviles pequeños */
     }
 }

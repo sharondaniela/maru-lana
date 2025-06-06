@@ -4,15 +4,14 @@ body {
     padding: 0;
 }
 
-
-
 .slider-container {
     position: relative;
     width: 100%;
-    max-width: 1200px; 
-    margin: 20px auto; 
+    max-width: 1200px;
+    margin: 20px auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Asegura que las imágenes no se salgan */
 }
 
 .slider-wrapper {
@@ -74,9 +73,9 @@ body {
 
 
 .productos {
-    max-width: 1200px; 
-    margin: 40px auto; 
-    padding: 0 20px; 
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
 .productos h2 {
@@ -87,10 +86,10 @@ body {
 }
 
 .contenedor-productos {
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 30px; 
-    justify-content: center; 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    justify-content: center;
 }
 
 .producto {
@@ -110,8 +109,8 @@ body {
 
 .producto img {
     width: 100%;
-    height: 200px; 
-    object-fit: cover; 
+    height: 200px;
+    object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
 }
@@ -160,7 +159,7 @@ body {
 
 .contador {
     font-size: 1.2em;
-    min-width: 25px; 
+    min-width: 25px;
     text-align: center;
 }
 
@@ -180,7 +179,9 @@ body {
     background-color: #45a049;
 }
 
-
+/* El footer que incluiste en este CSS DEBE IR EN footer.css. Lo elimino de aquí. */
+/* Si ya tienes un footer.css separado, este código no es necesario aquí: */
+/*
 .footer {
     background-color: #f4f4f4;
     padding: 3em 1em;
@@ -225,4 +226,120 @@ body {
 
 .social-icons img:hover {
     filter: grayscale(0%);
+}
+*/
+
+
+/* --- Media Queries para Responsividad en productos.css --- */
+
+/* Tabletas y pantallas más pequeñas (hasta 768px) */
+@media (max-width: 768px) {
+    .slider-container {
+        margin: 15px auto;
+        border-radius: 0; /* Quitar redondeo en pantallas pequeñas para ocupar todo el ancho */
+        box-shadow: none; /* Quitar sombra para una apariencia más limpia en móviles */
+    }
+
+    .slider-slide img {
+        max-height: 250px; /* Reducir altura del carrusel en tabletas */
+    }
+
+    .slider-slide .caption {
+        font-size: 1em;
+        padding: 8px 15px;
+        bottom: 10px;
+    }
+
+    .productos {
+        margin: 20px auto;
+        padding: 0 15px; /* Ajustar padding en móviles */
+    }
+
+    .productos h2 {
+        font-size: 1.8em; /* Tamaño de título más pequeño */
+        margin-bottom: 20px;
+    }
+
+    .contenedor-productos {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+        gap: 20px; /* Reducir espacio entre productos */
+    }
+
+    .producto {
+        padding: 1em;
+        border-radius: 8px;
+    }
+
+    .producto img {
+        height: 180px; /* Reducir altura de las imágenes de producto */
+        margin-bottom: 10px;
+    }
+
+    .producto h3 {
+        font-size: 1.2em;
+        margin-bottom: 5px;
+    }
+
+    .producto p {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    .cantidad {
+        margin: 0.8em 0;
+        gap: 0.5em;
+    }
+
+    .btn-menos,
+    .btn-mas {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9em;
+    }
+
+    .contador {
+        font-size: 1.1em;
+    }
+
+    .btn-agregar {
+        padding: 0.7em 1.2em;
+        font-size: 0.9em;
+        margin-top: 10px;
+    }
+}
+
+/* Teléfonos móviles (hasta 480px) */
+@media (max-width: 480px) {
+    .slider-container {
+        margin: 10px auto;
+    }
+    .slider-slide img {
+        max-height: 200px; /* Altura aún menor para móviles muy pequeños */
+    }
+    .slider-slide .caption {
+        font-size: 0.9em;
+        padding: 6px 10px;
+        bottom: 5px;
+    }
+    .slider-dots .dot {
+        width: 10px;
+        height: 10px;
+        gap: 5px;
+    }
+
+    .productos {
+        padding: 0 10px;
+    }
+
+    .productos h2 {
+        font-size: 1.6em;
+    }
+
+    .producto {
+        padding: 0.8em;
+    }
+
+    .producto img {
+        height: 150px;
+    }
 }
