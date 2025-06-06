@@ -1,47 +1,104 @@
+/* Estilos para el Navbar */
 .navbar {
-    background-color: #000; /* Fondo negro */
-    color: white; /* Color de texto blanco */
-    display: flex; /* Habilitar Flexbox */
-    justify-content: space-between; /* Alinear elementos a los extremos */
-    align-items: center; /* Centrar verticalmente los elementos */
-    padding: 1em 2em; /* Espaciado interno */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra sutil para el navbar */
+    background-color: #2c3e50; /* Fondo azul oscuro/grisáceo */
+    color: white;
+    display: flex;
+    justify-content: space-between; /* Alinea el logo a la izquierda y el menú a la derecha */
+    align-items: center; /* Centra verticalmente los elementos */
+    padding: 1em 2.5em; /* Más espaciado a los lados */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada para profundidad */
+    position: sticky; /* Navbar pegajoso en la parte superior */
+    top: 0;
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+    border-bottom-left-radius: 10px; /* Bordes redondeados en la parte inferior */
+    border-bottom-right-radius: 10px;
 }
 
 .logo {
     margin: 0;
-    font-size: 1.8em; /* Tamaño del logo */
-    color: white; /* Color del texto del logo */
-    text-decoration: none; /* Quitar subrayado si es un enlace */
+    font-size: 2.2em; /* Tamaño de fuente más grande para el logo */
+    color: #4CAF50; /* Color verde vibrante para el logo */
+    text-decoration: none;
+    font-weight: 700; /* Negrita para el logo */
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    color: #a2d2a5; /* Un verde más claro al pasar el ratón */
 }
 
 .menu {
-    list-style: none; /* Quitar viñetas de la lista */
-    display: flex; /* Habilitar Flexbox para los ítems del menú */
-    gap: 1.5em; /* Espacio entre los ítems del menú */
+    list-style: none; /* Quita las viñetas de la lista */
+    display: flex; /* Pone los elementos del menú en línea */
+    gap: 2em; /* Más espacio entre los ítems del menú */
     margin: 0;
     padding: 0;
 }
 
 .menu li a {
-    color: white; /* Color de los enlaces del menú */
-    text-decoration: none; /* Quitar subrayado de los enlaces */
-    font-weight: bold; /* Texto en negrita */
-    transition: color 0.3s ease; /* Transición suave al pasar el ratón */
+    color: white;
+    text-decoration: none;
+    font-weight: 600; /* Ligeramente más negrita */
+    font-size: 1.1em; /* Tamaño de fuente ligeramente más grande */
+    padding: 0.5em 0.8em; /* Añadir padding para hacer la zona de clic más grande */
+    border-radius: 5px; /* Bordes ligeramente redondeados en los enlaces */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .menu li a:hover {
-    color: #4CAF50; /* Color al pasar el ratón */
+    background-color: rgba(76, 175, 80, 0.2); /* Fondo verde semitransparente al pasar el ratón */
+    color: #4CAF50; /* Color verde en el texto al pasar el ratón */
+    transform: translateY(-2px); /* Efecto de elevación sutil */
 }
 
-/* Estilos para el contador de ítems en el carrito (si lo usas con un span.item-count) */
+/* Estilos para el contador de ítems en el carrito */
 .menu li a .item-count {
-    background-color: red;
+    background-color: #e74c3c; /* Rojo vibrante */
     color: white;
-    border-radius: 50%;
-    padding: 2px 6px;
-    margin-left: 5px;
-    font-size: 0.8em;
-    vertical-align: super;
+    border-radius: 50%; /* Completamente redondo */
+    padding: 3px 8px; /* Más padding para que se vea mejor */
+    margin-left: 8px; /* Más margen a la izquierda */
+    font-size: 0.85em; /* Tamaño ligeramente más grande */
+    font-weight: 700;
+    vertical-align: middle; /* Alinear verticalmente con el texto del enlace */
     display: inline-block; /* Asegura que el span se muestre correctamente */
+    min-width: 20px; /* Asegura un tamaño mínimo para un solo dígito */
+    text-align: center; /* Centra el número */
+}
+
+/* Media Queries para responsividad del Navbar */
+@media (max-width: 900px) {
+    .navbar {
+        flex-direction: column; /* Apila logo y menú en pantallas más pequeñas */
+        align-items: flex-start; /* Alinea a la izquierda al apilar */
+        padding: 1.5em 2em;
+    }
+
+    .logo {
+        margin-bottom: 15px; /* Espacio debajo del logo */
+    }
+
+    .menu {
+        flex-direction: column; /* Ítems del menú apilados */
+        gap: 0.8em; /* Menos espacio entre ítems apilados */
+        width: 100%; /* El menú ocupa todo el ancho disponible */
+        align-items: flex-start; /* Alinea los ítems a la izquierda */
+    }
+
+    .menu li a {
+        width: calc(100% - 1.6em); /* Hace que el enlace ocupe casi todo el ancho para un mejor clic */
+        padding: 0.8em 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 1em 1.5em; /* Menos padding en pantallas muy pequeñas */
+        border-bottom-left-radius: 0; /* Quitar redondeo en móviles extremos */
+        border-bottom-right-radius: 0;
+    }
+
+    .logo {
+        font-size: 1.8em; /* Tamaño de fuente más pequeño para el logo */
+    }
 }
