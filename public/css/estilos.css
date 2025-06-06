@@ -1,59 +1,72 @@
+/* Reseteo básico para consistencia en todos los navegadores */
+html, body {
+    margin: 0; /* Elimina el margen predeterminado del body */
+    padding: 0; /* Elimina el relleno predeterminado del body */
+    box-sizing: border-box; /* Muy importante: el padding y el border se incluyen en el ancho/alto total */
+    width: 100%; /* Asegura que html y body ocupen el 100% del ancho del viewport */
+    overflow-x: hidden; /* Evita el scroll horizontal no deseado, que a veces puede cambiar el ancho visible */
+}
+
+/* Aplica el box-sizing a todos los elementos para consistencia */
+*, *::before, *::after {
+    box-sizing: inherit; /* Hereda box-sizing de html/body */
+}
+
 body {
-    font-family: 'Inter', sans-serif; /* Usar Inter como fuente principal */
+    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #333;
-    background-color: #f8f8f8; /* Un fondo claro para la página */
+    color: #333; /* Color general de texto para el body */
+    background-color: #f8f8f8;
 }
 
 h1, h2, h3, h4 {
-    color: #2c3e50; /* Color oscuro para los títulos */
+    /* Eliminado el color específico. Ahora tomarán el color general del body
+       o el que les dé un CSS más específico (como navbar.css o footer.css). */
     margin-bottom: 0.8em;
 }
 
 a {
     text-decoration: none;
-    color: #4CAF50; /* Color verde para enlaces */
+    /* Eliminado el color específico. Ahora los enlaces tomarán el color predeterminado
+       del navegador o el que les dé un CSS más específico. */
 }
 
 a:hover {
-    color: #45a049; /* Tono de verde más oscuro al pasar el ratón */
+    text-decoration: underline; /* Puedes mantener el subrayado para el hover si lo deseas */
 }
 
 main {
-    max-width: 1200px; /* Ancho máximo para el contenido principal */
-    margin: 0 auto; /* Centrar el contenido principal */
-    padding: 20px; /* Espaciado interno */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-/* --- Sección Hero (Principal) --- */
 .hero-section {
-    /* Aquí está el cambio: Un gradiente oscuro sobre la imagen para mejorar la legibilidad del texto */
-    /* Y la URL de tu imagen de ruanas como fondo. */
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), /* Este oscurece la imagen ligeramente */
-                url('../imagenes/hero-ruanas-background.jpg') no-repeat center center/cover; /* <--- TU IMAGEN DE RUANAS AQUÍ */
-    color: white;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url('../imagenes/hero-ruanas-background.jpg') no-repeat center center/cover;
+    color: white; /* Color blanco para el texto dentro del hero-section */
     text-align: center;
-    padding: 100px 20px; /* Espaciado interno */
-    min-height: 400px; /* Altura mínima de la sección */
+    padding: 100px 20px;
+    min-height: 400px;
     display: flex;
-    align-items: center; /* Centrar contenido verticalmente */
-    justify-content: center; /* Centrar contenido horizontalmente */
-    border-radius: 12px; /* Bordes redondeados */
-    margin-bottom: 40px; /* Margen inferior */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .hero-content {
-    max-width: 800px; /* Ancho máximo para el texto del héroe */
+    max-width: 800px;
 }
 
 .hero-content h1 {
-    font-size: 3.5em; /* Tamaño grande para el título */
+    font-size: 3.5em;
     margin-bottom: 20px;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para el texto */
+    color: white; /* Color blanco para el h1 dentro del hero-content */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .hero-content p {
@@ -65,23 +78,22 @@ main {
 
 .hero-button {
     display: inline-block;
-    background-color: #4CAF50; /* Color verde del botón */
+    background-color: #4CAF50;
     color: white;
     padding: 15px 30px;
     border-radius: 8px;
     font-size: 1.1em;
     font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+    transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .hero-button:hover {
     background-color: #45a049;
-    transform: translateY(-3px); /* Efecto de elevación */
+    transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* --- Sección "Por Qué Elegirnos" --- */
 .why-choose-us {
     text-align: center;
     padding: 40px 20px;
@@ -98,14 +110,13 @@ main {
 
 .reasons-grid {
     display: grid;
-    /* Columnas flexibles: mínimo 250px, máximo 1fr (igual espacio) */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px; /* Espacio entre los ítems */
+    gap: 30px;
     justify-content: center;
 }
 
 .reason-item {
-    background-color: #f0f2f5; /* Fondo claro para cada ítem */
+    background-color: #f0f2f5;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -118,14 +129,14 @@ main {
 }
 
 .reason-item img {
-    width: 80px; /* Aumenta el ancho de la imagen */
-    height: 80px; /* Aumenta la altura de la imagen para mantener la proporción */
+    width: 80px;
+    height: 80px;
     margin-bottom: 15px;
 }
 
 .reason-item h3 {
     font-size: 1.3em;
-    color: #4CAF50;
+    color: #4CAF50; /* Color específico para h3 en esta sección */
     margin-bottom: 10px;
 }
 
@@ -134,7 +145,6 @@ main {
     color: #555;
 }
 
-/* --- Sección "Nuestra Historia" --- */
 .our-story {
     padding: 40px 20px;
     background-color: #ffffff;
@@ -151,7 +161,7 @@ main {
 
 .story-content {
     display: flex;
-    flex-direction: column; /* Apilado por defecto */
+    flex-direction: column;
     align-items: center;
     gap: 30px;
 }
@@ -167,31 +177,28 @@ main {
     font-size: 1.1em;
     line-height: 1.8;
     color: #444;
-    text-align: justify; /* Justificar el texto para mejor lectura */
-    max-width: 800px; /* Limita el ancho del texto para mejor legibilidad */
+    text-align: justify;
+    max-width: 800px;
 }
 
-/* Desktop: Imagen a un lado del texto en historia */
 @media (min-width: 769px) {
     .story-content {
-        flex-direction: row; /* En fila en pantallas grandes */
+        flex-direction: row;
         text-align: left;
-        align-items: flex-start; /* Alinear arriba */
+        align-items: flex-start;
     }
     .story-content img {
-        flex-shrink: 0; /* No encoger la imagen */
-        width: 40%; /* Imagen ocupa 40% del espacio */
-        max-width: 400px; /* Máximo 400px */
-        margin-right: 30px; /* Margen a la derecha de la imagen */
+        flex-shrink: 0;
+        width: 40%;
+        max-width: 400px;
+        margin-right: 30px;
     }
     .story-content p {
-        flex-grow: 1; /* Párrafo ocupa el resto del espacio */
-        max-width: unset; /* Quitar el límite de ancho para el p */
+        flex-grow: 1;
+        max-width: unset;
     }
 }
 
-
-/* --- Sección Ruanas Populares (Mejorada visualmente) --- */
 .popular-products-section {
     text-align: center;
     padding: 40px 20px;
@@ -232,7 +239,7 @@ main {
 
 .product-card img {
     max-width: 100%;
-    height: 220px; /* Altura fija para las imágenes */
+    height: 220px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -240,7 +247,7 @@ main {
 
 .product-card h3 {
     font-size: 1.4em;
-    color: #4CAF50;
+    color: #4CAF50; /* Color específico para h3 en esta sección */
     margin-bottom: 8px;
 }
 
@@ -270,60 +277,6 @@ main {
     margin-top: 20px;
 }
 
-/* --- Footer --- */
-.footer {
-    background-color: #2c3e50; /* Un color más oscuro para el footer */
-    color: white;
-    padding: 3em 1em;
-    margin-top: 3em;
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 2em;
-    padding: 0 20px;
-}
-
-.footer-section {
-    flex: 1;
-    min-width: 180px;
-}
-
-.footer-section h3, .footer-section h4 {
-    margin-bottom: 0.8em;
-    color: #4CAF50; /* Color verde para los títulos del footer */
-    font-size: 1.2em;
-}
-
-.footer-section p {
-    margin: 0.5em 0;
-    color: #ccc;
-    font-size: 0.95em;
-}
-
-.social-icons a {
-    margin-right: 15px;
-    display: inline-block;
-    color: white; /* Asegura que los enlaces sean blancos */
-}
-
-.social-icons a h3 { /* Estilo para los textos de redes sociales */
-    font-size: 1em;
-    margin: 0;
-    color: white;
-    transition: color 0.3s ease;
-}
-
-.social-icons a:hover h3 {
-    color: #4CAF50; /* Color verde al pasar el ratón */
-}
-
-/* Media Queries para Responsividad (Generales para el main y footer) */
 @media (max-width: 768px) {
     .hero-content h1 {
         font-size: 2.5em;
@@ -334,28 +287,11 @@ main {
     }
 
     .reasons-grid, .products-grid {
-        grid-template-columns: 1fr; /* Una columna en móviles */
+        grid-template-columns: 1fr;
     }
 
     .story-content {
         flex-direction: column;
-    }
-
-    .footer-container { /* Para el footer en móviles */
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .footer-section { /* Para el footer en móviles */
-        min-width: unset;
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .social-icons { /* Para el footer en móviles */
-        justify-content: center;
-        display: flex;
-        gap: 10px;
     }
 }
 
