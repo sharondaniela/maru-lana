@@ -3,36 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Compras</title>
-    <link rel="stylesheet" href="css/navbar.css"> <link rel="stylesheet" href="css/carrito.css"> <link rel="stylesheet" href="css/footer.css">
+    <title>Carrito de Compras | Ruanas Maru-Lana</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-    <header class="navbar">
-        <h1 class="logo">Tienda Ruanas Maru Lana</h1>
-        <nav>
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">Ruanas Maru-Lana</h1>
             <ul class="menu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="carrito.html">Carrito</a></li>
-                <li><a href="login.html">Login</a></li>
-                </ul>
+                <li><a href="login.html">Iniciar sesión</a></li>
+                <li><a href="registro.html">Registro</a></li>
+            </ul>
         </nav>
     </header>
 
-    <main>
+    <main class="carrito-page-main">
         <section class="carrito-container">
             <h2>Tu Carrito de Compras</h2>
-            <div id="productos-carrito">
-                </div>
 
-            <div class="resumen-carrito">
-                <h3>Total: $0.00</h3>
+            <div id="productos-carrito">
+                <p>Tu carrito está vacío.</p>
+                <!-- Ejemplo de un producto en el carrito (se llenará con JS) -->
+                <!--
+                <div class="producto-carrito">
+                    <div class="producto-info">
+                        <img src="ruta/a/imagen.jpg" alt="Nombre Producto">
+                        <span class="producto-nombre">Ruana Fantástica</span>
+                        <span class="producto-cantidad">x 1</span>
+                    </div>
+                    <span class="producto-precio">$150.000</span>
+                    <button class="btn-eliminar">Eliminar</button>
+                </div>
+                -->
             </div>
 
-            <button class="btn-comprar">Proceder a la Compra</button>
+            <div class="total-carrito">
+                <h3>Total: <span id="total-carrito-precio">$0</span></h3>
+            </div>
+
+            <div class="botones-carrito">
+                <button id="btn-seguir-comprando" class="btn-secundario">Seguir Comprando</button>
+                <button id="btn-proceder-compra" class="btn-primario">Proceder a la Compra</button>
+            </div>
         </section>
     </main>
- <footer class="footer">
+
+    <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
                 <h3>Artesanías Maru-Lana</h3>
@@ -63,5 +84,7 @@
             </div>
         </div>
     </footer>
-    <script src="scripts/navbar-ui.js"></script> <script src="scripts/carrito.js"></script> </body>
+    <script src="scripts/navbar-ui.js"></script>
+    <script src="scripts/carrito.js"></script>
+</body>
 </html>

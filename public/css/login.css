@@ -1,54 +1,136 @@
-/* Estilos generales */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  color: #fff;
+/* Reseteo básico universal para asegurar consistencia en el cálculo de tamaños */
+/* Incluí esta parte aquí también por si login.html es la única página sin estilos.css */
+*, *::before, *::after {
+    box-sizing: border-box; /* Incluye padding y border en el ancho/alto definido del elemento */
 }
 
+html, body {
+    margin: 0; /* Elimina márgenes predeterminados del navegador */
+    padding: 0; /* Elimina rellenos predeterminados del navegador */
+    width: 100%; /* Asegura que ocupen el 100% del ancho del viewport */
+    overflow-x: hidden; /* Evita barras de desplazamiento horizontal no deseadas */
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
+    display: flex; /* Para flexbox en el body */
+    flex-direction: column; /* Para apilar header, main y footer */
+}
 
+body {
+    font-family: 'Inter', sans-serif; /* Usamos la misma fuente que en estilos.css */
+    background-color: #f8f8f8; /* Fondo claro para el body, consistente con index.html */
+    color: #333; /* Color de texto general para el body */
+    line-height: 1.6;
+}
+
+/* Estilos para el contenedor principal que envuelve el formulario */
+.login-page-main {
+    flex-grow: 1; /* Hace que este 'main' ocupe todo el espacio vertical disponible */
+    display: flex; /* Para centrar el login-container verticalmente */
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+    padding: 20px; /* Un poco de padding para que no se pegue a los bordes en móviles */
+    background-color: #f8f8f8; /* Asegura el fondo claro si el main no ocupa todo el espacio */
+}
 
 /* Contenedor del formulario */
 .login-container {
-  background-color: #111;
-  padding: 40px;
-  border-radius: 10px;
-  max-width: 400px;
-  margin: 60px auto; /* Espacio desde el header */
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-  text-align: center;
+    background-color: #2c3e50; /* Fondo oscuro consistente con el navbar/footer */
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%; /* Asegura que ocupe el ancho disponible en móviles */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Sombra oscura para contraste */
+    text-align: center;
+    color: white; /* Color de texto blanco para el contenido del contenedor */
 }
 
-/* Inputs y botones */
+/* Título del formulario */
+.login-container h2 {
+    color: white; /* Color blanco para el título del formulario */
+    margin-bottom: 25px;
+    font-size: 2em;
+}
+
+/* Etiquetas */
+.login-form label {
+    display: block; /* Cada etiqueta en su propia línea */
+    text-align: left; /* Alinea el texto de la etiqueta a la izquierda */
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #f0f2f5; /* Un blanco suave para las etiquetas */
+}
+
+/* Inputs */
 .login-form input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0 20px;
-  border: none;
-  border-radius: 5px;
+    width: calc(100% - 20px); /* Asegura que el padding no exceda el ancho */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #555; /* Borde más sutil */
+    border-radius: 5px;
+    background-color: #3e5062; /* Fondo de input ligeramente más claro que el contenedor */
+    color: white; /* Texto del input blanco */
+    font-size: 1em;
 }
 
+.login-form input::placeholder {
+    color: #ccc; /* Color del placeholder */
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: #4CAF50; /* Borde al enfocar */
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5); /* Sombra al enfocar */
+}
+
+/* Botón de enviar */
 .login-form button {
-  background-color: white;
-  color: black;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
+    background-color: #4CAF50; /* Verde, consistente con tus botones de hero */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Botón al 100% de ancho */
+    margin-top: 15px; /* Espacio superior */
 }
 
 .login-form button:hover {
-  background-color: #ddd;
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Texto de registro */
 .registro {
-  margin-top: 20px;
+    margin-top: 25px; /* Más espacio arriba */
+    font-size: 0.95em;
+    color: #f0f2f5; /* Color del texto del párrafo */
 }
 
 .registro a {
-  color: white;
-  text-decoration: underline;
+    color: #87CEEB; /* Azul claro para el enlace, para que resalte */
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.registro a:hover {
+    color: #6495ED; /* Un azul un poco más oscuro al pasar el ratón */
+}
+
+/* Media Queries para responsividad, si necesitas ajustar el formulario en pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 25px;
+        margin: 20px auto;
+    }
+    .login-container h2 {
+        font-size: 1.8em;
+    }
+    .login-form button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
 }

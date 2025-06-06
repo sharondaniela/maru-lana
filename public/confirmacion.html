@@ -3,29 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmar Compra</title>
+    <title>Confirmar Compra | Ruanas Maru-Lana</title>
     <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/confirmacion.css"><link rel="stylesheet" href="css/footer.css"> </head> 
+    <link rel="stylesheet" href="css/confirmacion.css">
+    <link rel="stylesheet" href="css/footer.css">
+</head>
 <body>
-    <header class="navbar">
-        <h1 class="logo">Tienda Ruanas Maru Lana</h1>
-        <nav>
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">Ruanas Maru-Lana</h1>
             <ul class="menu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="carrito.html">Carrito</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="login.html">Iniciar sesión</a></li>
+                <li><a href="registro.html">Registro</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <main class="confirmacion-page-main">
         <section class="confirmacion-container">
             <h2>Confirmar Tu Pedido</h2>
 
             <div id="resumen-productos-confirmacion">
                 <p>Cargando resumen del pedido...</p>
-            </div>
+                </div>
 
             <div class="total-confirmacion">
                 <h3>Total del Pedido: <span id="total-pedido"></span></h3>
@@ -37,7 +40,8 @@
             </div>
         </section>
     </main>
- <footer class="footer">
+
+    <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
                 <h3>Artesanías Maru-Lana</h3>
@@ -69,5 +73,8 @@
         </div>
     </footer>
     <script src="scripts/navbar-ui.js"></script>
-    <script src="scripts/confirmacion.js"></script> </body>
+    <script src="scripts/confirmacion.js"></script>
+    <script src="scripts/carrito.js"></script>
+    <script src="scripts/productos.js"></script>
+</body>
 </html>

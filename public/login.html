@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Iniciar Sesión | Ruanas Maru-Lana</title>
-  <link rel="stylesheet" href="css/login.css"> <link rel="stylesheet" href="css/navbar.css"><link rel="stylesheet" href="css/footer.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Iniciar Sesión | Ruanas Maru-Lana</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <h1 class="logo">Productos | Ruanas Maru-Lana</h1>
-      <ul class="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="productos.html">Productos</a></li>
-        <li><a href="carrito.html">Carrito</a></li>
-        <li><a href="login.html">Iniciar sesión</a></li>
-      </ul>
-    </nav>
-  </header>
-  <div class="login-container">
-    <h2>Iniciar Sesión</h2>
-<form id="loginForm" class="login-form">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">Ruanas Maru-Lana</h1>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="login.html">Iniciar sesión</a></li>
+                <li><a href="registro.html">Registro</a></li> </ul>
+        </nav>
+    </header>
 
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password" required>
+    <main class="login-page-main">
+        <div class="login-container">
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm" class="login-form">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
 
-    <button type="submit">Iniciar Sesión</button>
-</form>
- <footer class="footer">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <p class="registro">¿No tienes cuenta? <a href="registro.html">Regístrate</a></p>
+        </div>
+    </main>
+
+    <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
                 <h3>Artesanías Maru-Lana</h3>
@@ -60,9 +68,10 @@
             </div>
         </div>
     </footer>
-<script src="scripts/login.js"></script>
-<script src="scripts/navbar-ui.js"></script>
-    <p class="registro">¿No tienes cuenta? <a href="registro.html">Regístrate</a></p>
-  </div>
+    <script src="scripts/login.js"></script>
+    <script src="scripts/navbar-ui.js"></script>
+    <script src="scripts/carrito.js"></script>
+    <script src="scripts/confirmacion.js"></script>
+    <script src="scripts/productos.js"></script>
 </body>
 </html>

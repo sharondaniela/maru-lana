@@ -1,18 +1,45 @@
-/* Estilos para la página de confirmación de compra */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+.confirmacion-page-main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
 
 .confirmacion-container {
     max-width: 800px;
-    margin: 40px auto;
+    width: 100%;
     padding: 30px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 .confirmacion-container h2 {
-    color: #4CAF50;
+    color: #2c3e50; /* Color oscuro como el navbar */
     margin-bottom: 25px;
     font-size: 2.2em;
 }
@@ -25,6 +52,7 @@
 
 .producto-confirmacion {
     display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
     align-items: center;
     justify-content: space-between;
     padding: 15px 0;
@@ -42,17 +70,35 @@
     object-fit: cover;
     border-radius: 5px;
     margin-right: 15px;
+    flex-shrink: 0; /* Evita que la imagen se encoja */
 }
 
 .producto-info {
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Apila nombre y cantidad en móvil */
+    align-items: flex-start;
     flex-grow: 1;
     text-align: left;
+    margin-bottom: 10px; /* Espacio entre info y precio en móvil */
+}
+
+@media (min-width: 576px) { /* A partir de cierto ancho, vuelven a estar en línea */
+    .producto-info {
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 0;
+    }
 }
 
 .producto-info span {
     margin-right: 10px;
+    margin-bottom: 5px; /* Espacio entre nombre y cantidad en móvil */
+}
+
+@media (min-width: 576px) {
+    .producto-info span {
+        margin-bottom: 0;
+    }
 }
 
 .producto-nombre {
@@ -62,14 +108,15 @@
 
 .producto-cantidad {
     color: #777;
+    font-size: 0.9em; /* Más pequeño para la cantidad */
 }
 
 .producto-precio-subtotal {
     font-weight: bold;
     color: #555;
-    white-space: nowrap; /* Evita que el precio se rompa en varias líneas */
+    white-space: nowrap;
+    align-self: flex-end; /* Alinea el precio al final cuando se envuelve */
 }
-
 
 .total-confirmacion {
     margin-top: 25px;
@@ -89,17 +136,33 @@
 .botones-confirmacion {
     margin-top: 30px;
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    flex-direction: column; /* Apila los botones en móvil */
+    gap: 15px; /* Espacio entre botones */
+}
+
+@media (min-width: 576px) {
+    .botones-confirmacion {
+        flex-direction: row; /* Vuelven a estar en línea en escritorio */
+        justify-content: center;
+        gap: 20px;
+    }
 }
 
 .btn-primario, .btn-secundario {
     padding: 12px 25px;
     font-size: 1.1em;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* Bordes más redondeados */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Botones ocupan el ancho completo en móvil */
+    max-width: 250px; /* Limita el ancho de los botones en escritorio */
+}
+
+@media (min-width: 576px) {
+    .btn-primario, .btn-secundario {
+        width: auto; /* Ancho automático en escritorio */
+    }
 }
 
 .btn-primario {
@@ -113,8 +176,8 @@
 }
 
 .btn-secundario {
-    background-color: #f0f0f0;
-    color: #555;
+    background-color: #f0f2f5; /* Fondo más claro para el secundario */
+    color: #2c3e50; /* Color de texto oscuro para el secundario */
     border: 1px solid #ccc;
 }
 
