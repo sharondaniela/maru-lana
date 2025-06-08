@@ -85,6 +85,16 @@ app.post('/login', (req, res) => {
     res.json({ success: true, redirect: '/index.html', user: { nombre: user.nombre } });
 });
 
+// ¡NUEVA RUTA DE LOGOUT!
+app.post('/logout', (req, res) => {
+    // En este punto, como no estamos manejando sesiones de servidor complejas (ej. con express-session),
+    // el logout es principalmente una confirmación al cliente.
+    // El cliente (navbar-ui.js) se encarga de limpiar localStorage.
+    console.log('Solicitud de cierre de sesión recibida.');
+    res.status(200).json({ message: 'Sesión cerrada exitosamente.' });
+});
+
+
 // *** CAMBIO PRINCIPAL PARA RENDER: Usar process.env.PORT ***
 const PORT = process.env.PORT || 3000; // Render provee un puerto en esta variable de entorno
 app.listen(PORT, () => console.log(`Servidor en el puerto ${PORT}`));

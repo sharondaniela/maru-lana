@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmar Compra | Ruanas Maru-Lana</title>
+    <title>Mi Perfil | Ruanas Maru-Lana</title>
     <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/confirmacion.css">
+    <link rel="stylesheet" href="css/perfil.css">
     <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
@@ -15,32 +15,49 @@
         <ul class="menu" id="main-menu"> <li><a href="index.html">Inicio</a></li>
             <li><a href="productos.html">Productos</a></li>
             <li><a href="carrito.html">Carrito</a></li>
-
-            <li id="nav-login"><a href="login.html">Login</a></li>
+            
+            <li id="nav-login"><a href="login.html">Iniciar sesión</a></li>
             <li id="nav-registro"><a href="registro.html">Registro</a></li>
             
             <li id="nav-perfil" style="display: none;"><a href="perfil.html">Perfil</a></li>
-            <li id="nav-logout" style="display: none;"><a id="logout-link" href="#">Cerrar Sesión</a></li>
+            <li id="nav-logout" style="display: none;"><a href="#" id="logout-link">Cerrar Sesión</a></li>
         </ul>
     </nav>
 </header>
 
-    <main class="confirmacion-page-main">
-        <section class="confirmacion-container">
-            <h2>Confirmar Tu Pedido</h2>
+    <main class="perfil-page-main">
+        <section class="perfil-container">
+            <h2>Mi Perfil</h2>
 
-             <div id="resumen-productos-confirmacion">
-                <p>Cargando resumen del pedido...</p>
-            </div>
+            <nav class="perfil-nav">
+                <ul>
+                    <li><a href="#datos-personales" class="active">Datos Personales</a></li>
+                    <li><a href="#mis-pedidos">Mis Pedidos</a></li>
+                    <li><a href="#configuracion">Configuración</a></li>
+                </ul>
+            </nav>
 
-            <div class="total-confirmacion">
-                <h3>Total del Pedido: <span id="total-pedido"></span></h3>
-            </div>
+            <div class="perfil-content">
+                <div id="datos-personales" class="tab-content active">
+                    <h3>Información Personal</h3>
+                    <p><strong>Nombre:</strong> <span id="perfil-nombre"></span></p>
+                    <p><strong>Email:</strong> <span id="perfil-email"></span></p>
+                    <button class="btn-primario">Editar Datos</button>
+                </div>
 
-            <div class="botones-confirmacion">
-                <button id="btn-volver-carrito" class="btn-secundario">Volver al Carrito</button>
-                <button id="btn-confirmar-compra" class="btn-primario">Confirmar Compra</button>
+                <div id="mis-pedidos" class="tab-content">
+                    <h3>Mis Pedidos</h3>
+                    <p>Aún no tienes pedidos.</p>
+                </div>
+
+                <div id="configuracion" class="tab-content">
+                    <h3>Configuración de Cuenta</h3>
+                    <p>Cambiar contraseña, preferencias de notificación, etc.</p>
+                    <button class="btn-primario">Cambiar Contraseña</button>
+                    <button class="btn-secundario">Preferencias de Notificación</button>
+                </div>
             </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -74,9 +91,6 @@
             </div>
         </div>
     </footer>
-    <script src="scripts/navbar-ui.js"></script>
-    <script src="scripts/confirmacion.js"></script>
-    <script src="scripts/carrito.js"></script>
-    <script src="scripts/productos.js"></script>
+    <script src="scripts/navbar-ui.js"></script> <script src="scripts/perfil.js"></script>
 </body>
 </html>

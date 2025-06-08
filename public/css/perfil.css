@@ -1,0 +1,147 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+.perfil-page-main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+.perfil-container {
+    max-width: 900px;
+    width: 100%;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.perfil-container h2 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+}
+
+.perfil-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #eee;
+}
+
+.perfil-nav li a {
+    display: block;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.perfil-nav li a:hover,
+.perfil-nav li a.active {
+    color: #4CAF50;
+    border-bottom: 3px solid #4CAF50;
+}
+
+.perfil-content {
+    text-align: left;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px 0;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.6em;
+}
+
+.tab-content p {
+    margin-bottom: 10px;
+    font-size: 1.05em;
+}
+
+.tab-content button {
+    margin-top: 15px;
+    margin-right: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primario {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-primario:hover {
+    background-color: #45a049;
+}
+
+.btn-secundario {
+    background-color: #f0f2f5;
+    color: #2c3e50;
+    border: 1px solid #ccc;
+}
+
+.btn-secundario:hover {
+    background-color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+    .perfil-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    .perfil-nav li a {
+        padding: 10px 15px;
+        width: 100%;
+        text-align: center;
+    }
+    .perfil-container {
+        padding: 20px;
+    }
+    .tab-content h3 {
+        font-size: 1.4em;
+    }
+    .tab-content button {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

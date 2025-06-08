@@ -1,73 +1,72 @@
-// public/scripts/navbar-ui.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    const user = localStorage.getItem('loggedInUser'); // Obtener el nombre del usuario
-    const menu = document.querySelector('.menu'); // Asumiendo que tu menú tiene la clase 'menu'
+    // Referencias a los elementos del menú de autenticación
+    const navLogin = document.getElementById('nav-login');
+    const navRegistro = document.getElementById('nav-registro');
+    const navPerfil = document.getElementById('nav-perfil');
+    const navLogout = document.getElementById('nav-logout');
+    const logoutLink = document.getElementById('logout-link'); // El 'a' dentro de navLogout
 
-    if (menu) {
-        // Eliminar los elementos de Login/Registro si existen
-        const loginMenuItem = menu.querySelector('li a[href="login.html"]');
-        const registerMenuItem = menu.querySelector('li a[href="registro.html"]');
+    function updateNavbarAuthLinks() {
+        const user = localStorage.getItem('loggedInUser'); // Obtener el nombre del usuario
 
-        if (loginMenuItem) {
-            loginMenuItem.parentElement.remove(); // Eliminar el <li> padre
-        }
-        if (registerMenuItem) {
-            registerMenuItem.parentElement.remove(); // Eliminar el <li> padre
-        }
-
-        // Si hay un usuario logueado, mostrar su nombre y un botón de "Cerrar Sesión"
         if (user) {
-            // Crear elemento para mostrar el nombre del usuario
-            const userLi = document.createElement('li');
-            userLi.innerHTML = `<a href="#">Hola, ${user}</a>`; // Puedes hacer que no sea un enlace si quieres
+            // Usuario logueado: Ocultar Login/Registro, Mostrar Perfil/Cerrar Sesión
+            if (navLogin) navLogin.style.display = 'none';
+            if (navRegistro) navRegistro.style.display = 'none';
+            
+            if (navPerfil) navPerfil.style.display = 'block'; // O 'flex', 'inline-block' según tu CSS
+            if (navLogout) navLogout.style.display = 'block'; // O 'flex', 'inline-block'
 
-            // Crear botón de Cerrar Sesión
-            const logoutLi = document.createElement('li');
-            const logoutButton = document.createElement('a');
-            logoutButton.href = '#'; // Esto puede ser un enlace temporal o un #
-            logoutButton.textContent = 'Cerrar Sesión';
-            logoutButton.style.cursor = 'pointer'; // Para que parezca clickeable
-            logoutButton.addEventListener('click', (event) => {
-                event.preventDefault();
-                localStorage.removeItem('loggedInUser'); // Eliminar el usuario de localStorage
-                alert('Sesión cerrada.');
-                window.location.href = '/index.html'; // Redirigir al inicio o a la página de login
-            });
-            logoutLi.appendChild(logoutButton);
-
-            // Añadir los nuevos elementos al menú
-            menu.appendChild(userLi);
-            menu.appendChild(logoutLi);
         } else {
-            // Si no hay usuario logueado, asegurarse de que los enlaces de Login/Registro están presentes
-            // (Esto es redundante si ya están en el HTML, pero asegura si los remueves dinámicamente)
-            const defaultLoginLi = document.createElement('li');
-            defaultLoginLi.innerHTML = '<a href="login.html">Login</a>';
-            const defaultRegisterLi = document.createElement('li');
-            defaultRegisterLi.innerHTML = '<a href="registro.html">Registro</a>';
+            // Usuario no logueado: Mostrar Login/Registro, Ocultar Perfil/Cerrar Sesión
+            if (navLogin) navLogin.style.display = 'block'; // O 'flex', 'inline-block'
+            if (navRegistro) navRegistro.style.display = 'block'; // O 'flex', 'inline-block'
 
-            // Solo añadir si no existen ya
-            if (!menu.querySelector('li a[href="login.html"]')) {
-                 menu.appendChild(defaultLoginLi);
-            }
-            if (!menu.querySelector('li a[href="registro.html"]')) {
-                menu.appendChild(defaultRegisterLi);
-            }
+            if (navPerfil) navPerfil.style.display = 'none';
+            if (navLogout) navLogout.style.display = 'none';
         }
     }
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Lógica existente de navbar-ui.js (si tienes alguna)
-    // Por ejemplo, para manejar el "Hola, usuario" y "Cerrar Sesión" si están basados en JS
-    actualizarNumeroCarritoEnNavbar(); // Llama a la función al cargar el DOM
+    // Event listener para "Cerrar Sesión"
+    if (logoutLink) {
+        logoutLink.addEventListener('click', async (event) => {
+            event.preventDefault();
+            try {
+                const response = await fetch('/logout', {
+                    method: 'POST', // Esto es crucial y debe coincidir con tu server.js
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    localStorage.removeItem('loggedInUser');
+                    localStorage.removeItem('userEmail'); // ¡Añadido! Si estás guardando el email
+                    alert('Sesión cerrada.');
+                    updateNavbarAuthLinks(); // Actualiza el navbar inmediatamente
+                    window.location.href = 'index.html'; // Redirige al inicio
+                } else {
+                    alert('Error al cerrar sesión: ' + (data.error || 'Inténtalo de nuevo.'));
+                }
+            } catch (error) {
+                console.error('Error al intentar cerrar sesión:', error);
+                alert('Ocurrió un error al intentar iniciar sesión. Por favor, inténtalo de nuevo más tarde.');
+            }
+        });
+    }
+
+    // Inicializa el navbar al cargar la página
+    updateNavbarAuthLinks(); 
+    
+    // Lógica existente para el carrito (mantener como está)
+    actualizarNumeroCarritoEnNavbar(); 
 });
 
 function actualizarNumeroCarritoEnNavbar() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
-    // Asumiendo que tu enlace al carrito es el que tiene href="carrito.html"
     const carritoIcon = document.querySelector('.menu li a[href="carrito.html"]'); 
     
     if (carritoIcon) {
@@ -75,13 +74,12 @@ function actualizarNumeroCarritoEnNavbar() {
         if (!itemCountSpan) {
             itemCountSpan = document.createElement('span');
             itemCountSpan.classList.add('item-count');
-            // Puedes colocar estos estilos en tu navbar.css si prefieres
             itemCountSpan.style.backgroundColor = 'red';
             itemCountSpan.style.color = 'white';
             itemCountSpan.style.borderRadius = '50%';
             itemCountSpan.style.padding = '2px 6px';
             itemCountSpan.style.marginLeft = '5px';
-            itemCountSpan.style.verticalAlign = 'super'; // Para alinear con el texto del enlace
+            itemCountSpan.style.verticalAlign = 'super';
             carritoIcon.appendChild(itemCountSpan);
         }
         itemCountSpan.textContent = totalItems > 0 ? totalItems : '';
