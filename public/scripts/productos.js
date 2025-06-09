@@ -1,4 +1,4 @@
-// public/scripts/productos.js
+
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.producto').forEach(producto => {
@@ -21,14 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const btnAgregar = producto.querySelector('.btn-agregar');
         btnAgregar.addEventListener('click', () => {
-            // *** NUEVA LÓGICA: Verificar si el usuario está logueado ***
+        
             if (!isUserLoggedIn()) {
                 alert('Debes iniciar sesión para agregar productos al carrito.');
-                // Opcional: Redirigir a la página de login
+               
                 window.location.href = 'login.html';
-                return; // Detener la ejecución si el usuario no está logueado
+                return; 
             }
-            // *** Fin de la nueva lógica ***
+       
 
             const nombre = producto.querySelector('h3').textContent;
             const precioTexto = producto.querySelector('p').textContent;
@@ -40,12 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // *** NUEVA FUNCIÓN: Para verificar el estado de login ***
-    // Esta función verifica si 'loggedInUser' existe en localStorage
+
+ 
     function isUserLoggedIn() {
         return localStorage.getItem('loggedInUser') !== null;
     }
-    // *** Fin de la nueva función ***
+
 
     function agregarProductoAlCarrito(producto) {
         let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -60,42 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         localStorage.setItem('carrito', JSON.stringify(carrito));
         alert(`${producto.nombre} (x${producto.cantidad}) agregado al carrito.`);
-        // Nota: actualizarNumeroCarritoEnNavbar() debe estar definida globalmente (ej. en navbar-ui.js)
-        // ya que la movimos allí para que funcione en todas las páginas.
-        // Si no la moviste, déjala aquí, pero lo ideal es que esté centralizada.
-        // Si aún la tienes aquí y en navbar-ui.js, asegúrate de que no haya duplicidad.
+ 
         actualizarNumeroCarritoEnNavbar();
     }
 
-    // Nota: La función actualizarNumeroCarritoEnNavbar() y su llamada inicial
-    // deberían haber sido movidas a navbar-ui.js para que funcione en todas las páginas.
-    // Si la mantienes aquí, solo funcionará en productos.html.
-    // Eliminar la definición aquí si ya la tienes en navbar-ui.js:
-    /*
-    function actualizarNumeroCarritoEnNavbar() {
-        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-        const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
-        const carritoIcon = document.querySelector('.menu li a[href="carrito.html"]');
-        if (carritoIcon) {
-            let itemCountSpan = carritoIcon.querySelector('.item-count');
-            if (!itemCountSpan) {
-                itemCountSpan = document.createElement('span');
-                itemCountSpan.classList.add('item-count');
-                itemCountSpan.style.backgroundColor = 'red';
-                itemCountSpan.style.color = 'white';
-                itemCountSpan.style.borderRadius = '50%';
-                itemCountSpan.style.padding = '2px 6px';
-                itemCountSpan.style.marginLeft = '5px';
-                carritoIcon.appendChild(itemCountSpan);
-            }
-            itemCountSpan.textContent = totalItems > 0 ? totalItems : '';
-            itemCountSpan.style.display = totalItems > 0 ? 'inline-block' : 'none';
-        }
-    }
-    actualizarNumeroCarritoEnNavbar();
-    */
-
-    // Lógica del carrusel (sin cambios)
     const sliderWrapper = document.querySelector('.slider-wrapper');
     const slides = document.querySelectorAll('.slider-slide');
     const dotsContainer = document.querySelector('.slider-dots');

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (registrationForm) {
         registrationForm.addEventListener('submit', async (event) => {
-            event.preventDefault(); // Evita el envío tradicional del formulario
+            event.preventDefault(); 
 
             const nombre = registrationForm.querySelector('input[name="nombre"]').value;
             const email = registrationForm.querySelector('input[name="email"]').value;
@@ -27,11 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await response.json();
 
                 if (response.ok) {
-                    // Registro exitoso
+                   
                     alert('Registro exitoso. Serás redirigido para iniciar sesión.');
-                    window.location.href = data.redirect; // Redirige a /login.html
+                    window.location.href = data.redirect; 
                 } else {
-                    // Error en el registro (ej. usuario ya existe)
+                    
                     alert('Error en el registro: ' + data.error);
                 }
             } catch (error) {

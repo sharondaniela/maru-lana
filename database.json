@@ -14,6 +14,16 @@
       "nombre": "sharon",
       "email": "sharon@gmail.com",
       "password": "SSS"
+    },
+    {
+      "nombre": "Samuel",
+      "email": "Samuel@gmail.com",
+      "password": "Samuel"
+    },
+    {
+      "nombre": "daniel",
+      "email": "daniel@gmail.com",
+      "password": "Daniel"
     }
   ]
 }

@@ -1,6 +1,5 @@
-/* --- Footer --- */
 .footer {
-    background-color: #2c3e50; /* Un color más oscuro para el footer */
+    background-color: #2c3e50;
     color: white;
     padding: 3em 1em;
     margin-top: 3em;
@@ -24,7 +23,7 @@
 
 .footer-section h3, .footer-section h4 {
     margin-bottom: 0.8em;
-    color: #4CAF50; /* Color verde para los títulos del footer */
+    color: #4CAF50;
     font-size: 1.2em;
 }
 
@@ -37,10 +36,10 @@
 .social-icons a {
     margin-right: 15px;
     display: inline-block;
-    color: white; /* Asegura que los enlaces sean blancos */
+    color: white;
 }
 
-.social-icons a h3 { /* Estilo para los textos de redes sociales */
+.social-icons a h3 {
     font-size: 1em;
     margin: 0;
     color: white;
@@ -48,10 +47,9 @@
 }
 
 .social-icons a:hover h3 {
-    color: #4CAF50; /* Color verde al pasar el ratón */
+    color: #4CAF50;
 }
 
-/* Media Queries para Responsividad del Footer */
 @media (max-width: 768px) {
     .footer-container {
         flex-direction: column;
@@ -72,9 +70,8 @@
 }
 
 
-/* --- Footer --- */
 .footer {
-    background-color: #2c3e50; /* Un color más oscuro para el footer */
+    background-color: #2c3e50;
     color: white;
     padding: 3em 1em;
     margin-top: 3em;
@@ -98,7 +95,7 @@
 
 .footer-section h3, .footer-section h4 {
     margin-bottom: 0.8em;
-    color: #4CAF50; /* Color verde para los títulos del footer */
+    color: #4CAF50;
     font-size: 1.2em;
 }
 
@@ -111,10 +108,10 @@
 .social-icons a {
     margin-right: 15px;
     display: inline-block;
-    color: white; /* Asegura que los enlaces sean blancos */
+    color: white;
 }
 
-.social-icons a h3 { /* Estilo para los textos de redes sociales */
+.social-icons a h3 {
     font-size: 1em;
     margin: 0;
     color: white;
@@ -122,10 +119,9 @@
 }
 
 .social-icons a:hover h3 {
-    color: #4CAF50; /* Color verde al pasar el ratón */
+    color: #4CAF50;
 }
 
-/* Media Queries para Responsividad (Generales para el main y footer) */
 @media (max-width: 768px) {
     .hero-content h1 {
         font-size: 2.5em;
@@ -136,25 +132,25 @@
     }
 
     .reasons-grid, .products-grid {
-        grid-template-columns: 1fr; /* Una columna en móviles */
+        grid-template-columns: 1fr;
     }
 
     .story-content {
         flex-direction: column;
     }
 
-    .footer-container { /* Para el footer en móviles */
+    .footer-container {
         flex-direction: column;
         text-align: center;
     }
 
-    .footer-section { /* Para el footer en móviles */
+    .footer-section {
         min-width: unset;
         width: 100%;
         margin-bottom: 20px;
     }
 
-    .social-icons { /* Para el footer en móviles */
+    .social-icons {
         justify-content: center;
         display: flex;
         gap: 10px;

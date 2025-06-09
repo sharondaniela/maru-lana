@@ -1,15 +1,15 @@
-/* Reseteo básico para consistencia en todos los navegadores */
+
 html, body {
-    margin: 0; /* Elimina el margen predeterminado del body */
-    padding: 0; /* Elimina el relleno predeterminado del body */
-    box-sizing: border-box; /* Muy importante: el padding y el border se incluyen en el ancho/alto total */
-    width: 100%; /* Asegura que html y body ocupen el 100% del ancho del viewport */
-    overflow-x: hidden; /* Evita el scroll horizontal no deseado, que a veces puede cambiar el ancho visible */
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    width: 100%; 
+    overflow-x: hidden; 
 }
 
-/* Aplica el box-sizing a todos los elementos para consistencia */
+
 *, *::before, *::after {
-    box-sizing: inherit; /* Hereda box-sizing de html/body */
+    box-sizing: inherit; 
 }
 
 body {
@@ -17,24 +17,22 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #333; /* Color general de texto para el body */
+    color: #333; 
     background-color: #f8f8f8;
 }
 
 h1, h2, h3, h4 {
-    /* Eliminado el color específico. Ahora tomarán el color general del body
-       o el que les dé un CSS más específico (como navbar.css o footer.css). */
+
     margin-bottom: 0.8em;
 }
 
 a {
     text-decoration: none;
-    /* Eliminado el color específico. Ahora los enlaces tomarán el color predeterminado
-       del navegador o el que les dé un CSS más específico. */
+
 }
 
 a:hover {
-    text-decoration: underline; /* Puedes mantener el subrayado para el hover si lo deseas */
+    text-decoration: underline; 
 }
 
 main {
@@ -46,7 +44,7 @@ main {
 .hero-section {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
                 url('../imagenes/hero-ruanas-background.jpg') no-repeat center center/cover;
-    color: white; /* Color blanco para el texto dentro del hero-section */
+    color: white; 
     text-align: center;
     padding: 100px 20px;
     min-height: 400px;
@@ -65,7 +63,7 @@ main {
 .hero-content h1 {
     font-size: 3.5em;
     margin-bottom: 20px;
-    color: white; /* Color blanco para el h1 dentro del hero-content */
+    color: white; 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
@@ -136,7 +134,7 @@ main {
 
 .reason-item h3 {
     font-size: 1.3em;
-    color: #4CAF50; /* Color específico para h3 en esta sección */
+    color: #4CAF50;
     margin-bottom: 10px;
 }
 
@@ -247,7 +245,7 @@ main {
 
 .product-card h3 {
     font-size: 1.4em;
-    color: #4CAF50; /* Color específico para h3 en esta sección */
+    color: #4CAF50;
     margin-bottom: 8px;
 }
 

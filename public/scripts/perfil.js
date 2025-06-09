@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const loggedInUser = localStorage.getItem('loggedInUser');
-    const userEmail = localStorage.getItem('userEmail') || 'N/A'; // Asegúrate que login.js guarde 'userEmail'
+    const userEmail = localStorage.getItem('userEmail') || 'N/A'; 
 
     if (perfilNombreSpan) {
         perfilNombreSpan.textContent = loggedInUser || 'Invitado';

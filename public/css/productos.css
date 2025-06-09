@@ -11,7 +11,7 @@ body {
     margin: 20px auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Asegura que las imágenes no se salgan */
+    overflow: hidden;
 }
 
 .slider-wrapper {
@@ -179,69 +179,15 @@ body {
     background-color: #45a049;
 }
 
-/* El footer que incluiste en este CSS DEBE IR EN footer.css. Lo elimino de aquí. */
-/* Si ya tienes un footer.css separado, este código no es necesario aquí: */
-/*
-.footer {
-    background-color: #f4f4f4;
-    padding: 3em 1em;
-    margin-top: 3em;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 2em;
-}
-
-.footer-section {
-    flex: 1;
-    min-width: 180px;
-}
-
-.footer-section h3, .footer-section h4 {
-    margin-bottom: 0.5em;
-    color: #333;
-}
-
-.footer-section p {
-    margin: 0.3em 0;
-    color: #555;
-}
-
-.social-icons a {
-    margin-right: 10px;
-    display: inline-block;
-}
-
-.social-icons img {
-    width: 24px;
-    height: 24px;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
-}
-
-.social-icons img:hover {
-    filter: grayscale(0%);
-}
-*/
-
-
-/* --- Media Queries para Responsividad en productos.css --- */
-
-/* Tabletas y pantallas más pequeñas (hasta 768px) */
 @media (max-width: 768px) {
     .slider-container {
         margin: 15px auto;
-        border-radius: 0; /* Quitar redondeo en pantallas pequeñas para ocupar todo el ancho */
-        box-shadow: none; /* Quitar sombra para una apariencia más limpia en móviles */
+        border-radius: 0;
+        box-shadow: none;
     }
 
     .slider-slide img {
-        max-height: 250px; /* Reducir altura del carrusel en tabletas */
+        max-height: 250px;
     }
 
     .slider-slide .caption {
@@ -252,17 +198,17 @@ body {
 
     .productos {
         margin: 20px auto;
-        padding: 0 15px; /* Ajustar padding en móviles */
+        padding: 0 15px;
     }
 
     .productos h2 {
-        font-size: 1.8em; /* Tamaño de título más pequeño */
+        font-size: 1.8em;
         margin-bottom: 20px;
     }
 
     .contenedor-productos {
-        grid-template-columns: 1fr; /* Una columna en móviles */
-        gap: 20px; /* Reducir espacio entre productos */
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .producto {
@@ -271,7 +217,7 @@ body {
     }
 
     .producto img {
-        height: 180px; /* Reducir altura de las imágenes de producto */
+        height: 180px;
         margin-bottom: 10px;
     }
 
@@ -308,13 +254,12 @@ body {
     }
 }
 
-/* Teléfonos móviles (hasta 480px) */
 @media (max-width: 480px) {
     .slider-container {
         margin: 10px auto;
     }
     .slider-slide img {
-        max-height: 200px; /* Altura aún menor para móviles muy pequeños */
+        max-height: 200px;
     }
     .slider-slide .caption {
         font-size: 0.9em;

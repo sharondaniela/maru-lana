@@ -6,12 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderizarResumenConfirmacion() {
         let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-        resumenProductosConfirmacionDiv.innerHTML = ''; // Limpia el contenido
-
+        resumenProductosConfirmacionDiv.innerHTML = ''; 
         if (carrito.length === 0) {
             resumenProductosConfirmacionDiv.innerHTML = '<p>No hay productos en el pedido.</p>';
             totalPedidoSpan.textContent = '$0.00';
-            // Puedes ocultar los botones o deshabilitarlos si el carrito está vacío en confirmación
+
             if (btnConfirmarCompra) btnConfirmarCompra.style.display = 'none';
             return;
         }
@@ -38,29 +37,28 @@ document.addEventListener('DOMContentLoaded', () => {
             resumenProductosConfirmacionDiv.appendChild(productoDiv);
         });
 
-        // Asegura que el total se muestre correctamente
+    
         totalPedidoSpan.textContent = `$${totalGeneral.toFixed(2)}`;
 
-        // Asegura que los botones estén visibles
-        if (btnConfirmarCompra) btnConfirmarCompra.style.display = 'block'; // O 'inline-block' según tu CSS
+   
+        if (btnConfirmarCompra) btnConfirmarCompra.style.display = 'block';
     }
 
-    // Event listener para el botón "Volver al Carrito"
+    
     if (btnVolverCarrito) {
         btnVolverCarrito.addEventListener('click', () => {
-            window.location.href = 'carrito.html'; // Redirige a la página del carrito
+            window.location.href = 'carrito.html'; 
         });
     }
 
-    // Event listener para el botón "Confirmar Compra"
     if (btnConfirmarCompra) {
         btnConfirmarCompra.addEventListener('click', () => {
             const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
             if (carrito.length > 0) {
-                // Lógica para finalizar la compra (ej. enviar a un API de pedidos)
+           
                 alert('¡Compra confirmada! Gracias por tu pedido.');
-                localStorage.removeItem('carrito'); // Vaciar el carrito después de la compra
-                // Opcional: Redirigir a una página de agradecimiento o a la página de inicio
+                localStorage.removeItem('carrito'); 
+                
                 window.location.href = 'index.html'; 
             } else {
                 alert('Tu carrito está vacío. No hay nada que confirmar.');
@@ -68,6 +66,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Llama a la función al cargar la página para mostrar el resumen
     renderizarResumenConfirmacion();
 });

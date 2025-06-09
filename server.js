@@ -4,25 +4,18 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
 
-// Middlewares
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// *** Importante para Render: Servir la carpeta 'public' correctamente ***
-// __dirname se refiere al directorio del archivo server.js
-// path.join asegura que la ruta sea correcta en cualquier sistema operativo
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Base de datos temporal (archivo JSON)
-// Render generalmente permite escribir en el sistema de archivos, pero para bases de datos persistentes
-// se recomienda una base de datos externa o un servicio de datos de Render.
-// Para este tipo de base de datos simple (database.json), funcionará.
+
 const DB_PATH = path.join(__dirname, 'database.json');
 console.log('Ruta de la base de datos:', DB_PATH);
 
-// Inicializar DB si no existe
-// Render puede recrear el sistema de archivos en cada despliegue,
-// por lo que este archivo podría ser volátil.
+
 if (!fs.existsSync(DB_PATH)) {
     fs.writeFileSync(DB_PATH, JSON.stringify({ users: [] }, null, 2));
     console.log('database.json creado con éxito.');
@@ -30,7 +23,7 @@ if (!fs.existsSync(DB_PATH)) {
     console.log('database.json ya existe.');
 }
 
-// Rutas
+
 app.post('/registro', (req, res) => {
     const { nombre, email, password } = req.body;
     let db;
@@ -43,13 +36,12 @@ app.post('/registro', (req, res) => {
         return res.status(500).json({ error: 'Error interno del servidor al leer la DB.' });
     }
 
-    // Validar si el usuario ya existe
     if (db.users.some(user => user.email === email)) {
         console.log('Intento de registro de usuario existente:', email);
         return res.status(400).json({ error: 'El usuario ya existe' });
     }
 
-    // Guardar nuevo usuario
+
     db.users.push({ nombre, email, password });
     console.log('Nuevo estado de la DB antes de escribir:', db);
 
@@ -85,16 +77,14 @@ app.post('/login', (req, res) => {
     res.json({ success: true, redirect: '/index.html', user: { nombre: user.nombre } });
 });
 
-// ¡NUEVA RUTA DE LOGOUT!
+
 app.post('/logout', (req, res) => {
-    // En este punto, como no estamos manejando sesiones de servidor complejas (ej. con express-session),
-    // el logout es principalmente una confirmación al cliente.
-    // El cliente (navbar-ui.js) se encarga de limpiar localStorage.
+
     console.log('Solicitud de cierre de sesión recibida.');
     res.status(200).json({ message: 'Sesión cerrada exitosamente.' });
 });
 
 
-// *** CAMBIO PRINCIPAL PARA RENDER: Usar process.env.PORT ***
-const PORT = process.env.PORT || 3000; // Render provee un puerto en esta variable de entorno
+
+const PORT = process.env.PORT || 3000; 
 app.listen(PORT, () => console.log(`Servidor en el puerto ${PORT}`));

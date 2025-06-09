@@ -1,4 +1,4 @@
-// public/scripts/login.js
+
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.querySelector('.login-form');
 
@@ -22,18 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (response.ok) {
                     alert('Inicio de sesión exitoso. ¡Bienvenido!');
-                    // *** MODIFICACIÓN AQUÍ: Establecer loggedInUser en localStorage ***
+
                     if (data.user && data.user.nombre) {
-                        localStorage.setItem('loggedInUser', data.user.nombre); // Guarda el nombre del usuario
+                        localStorage.setItem('loggedInUser', data.user.nombre); 
                     } else {
-                        // Si por alguna razón no viene el nombre, guarda un booleano
+                 
                         localStorage.setItem('loggedInUser', 'true');
                     }
-                    // *** Fin de modificación ***
 
-                    window.location.href = data.redirect; // Redirige a /index.html (o la ruta que venga del servidor)
+
+                    window.location.href = data.redirect; 
                 } else {
-                    // Si el servidor envía un error específico, úsalo; de lo contrario, un mensaje genérico.
+         
                     alert('Error al iniciar sesión: ' + (data.error || 'Credenciales incorrectas.'));
                 }
             } catch (error) {
