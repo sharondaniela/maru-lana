@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.producto').forEach(producto => {
         const btnMenos = producto.querySelector('.btn-menos');
@@ -7,16 +5,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const contadorSpan = producto.querySelector('.contador');
         let cantidad = parseInt(contadorSpan.textContent);
 
+        // 👉 LINEAS NUEVAS PARA MULTIPLICAR
+        const unitPriceElement = producto.querySelector(".unit_price");
+        const totalPriceElement = producto.querySelector(".total_price");
+        let unitPrice = parseInt(unitPriceElement.dataset.price);
+
+        function actualizarTotal() {
+            const total = cantidad * unitPrice;
+            totalPriceElement.textContent = "$" + total.toLocaleString("es-CO");
+        }
+        actualizarTotal();
+        // 👈 HASTA AQUÍ
+
         btnMenos.addEventListener('click', () => {
             if (cantidad > 1) {
                 cantidad--;
                 contadorSpan.textContent = cantidad;
+                actualizarTotal(); // 👉 MULTIPLICA
             }
         });
 
         btnMas.addEventListener('click', () => {
             cantidad++;
             contadorSpan.textContent = cantidad;
+            actualizarTotal(); // 👉 MULTIPLICA
         });
 
         const btnAgregar = producto.querySelector('.btn-agregar');
@@ -24,11 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
             if (!isUserLoggedIn()) {
                 alert('Debes iniciar sesión para agregar productos al carrito.');
-               
                 window.location.href = 'login.html';
                 return; 
             }
-       
 
             const nombre = producto.querySelector('h3').textContent;
             const precioTexto = producto.querySelector('p').textContent;
@@ -40,12 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
- 
     function isUserLoggedIn() {
         return localStorage.getItem('loggedInUser') !== null;
     }
-
 
     function agregarProductoAlCarrito(producto) {
         let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
