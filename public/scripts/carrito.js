@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (carrito.length === 0) {
             productosCarritoDiv.innerHTML = '<p style="text-align: center; color: white;">Tu carrito está vacío.</p>';
-            resumenCarritoDiv.innerHTML = '<h3>Total: $0.00</h3>'; 
+            resumenCarritoDiv.innerHTML = '<h3>Total: $0</h3>'; 
 
             return;
         }
@@ -37,7 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${producto.imagenSrc}" alt="${producto.nombre}">
                 <div class="info-producto">
                     <h4>${producto.nombre}</h4>
-                    <p>Precio: $${precioNumerico.toFixed(2)}</p>
+                    <p>Precio: $${precioNumerico.toLocaleString('es-CO', {
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 0
+                    })}</p>
                     <div class="cantidad">
                         <button class="btn-menos" data-nombre="${producto.nombre}">-</button>
                         <span>${cantidadNumerica}</span>
@@ -52,10 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
        
         const totalCarritoPrecioSpan = document.getElementById('total-carrito-precio');
         if (totalCarritoPrecioSpan) {
-            totalCarritoPrecioSpan.textContent = totalCarrito.toFixed(2);
+            totalCarritoPrecioSpan.textContent = '$' + totalCarrito.toLocaleString('es-CO', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
         } else {
-           
-            resumenCarritoDiv.innerHTML = `<h3>Total: $${totalCarrito.toFixed(2)}</h3>`;
+
+            resumenCarritoDiv.innerHTML = `<h3>Total: $${totalCarrito.toLocaleString('es-CO', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            })}</h3>`;
         }
        
 

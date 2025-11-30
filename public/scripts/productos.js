@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const nombre = producto.querySelector('h3').textContent;
             const precioTexto = producto.querySelector('p').textContent;
-            const precio = parseFloat(precioTexto.replace('$', '').trim());
+            const precio = parseFloat(precioTexto.replace('$', '').replaceAll('.', '').trim());
             const imagenSrc = producto.querySelector('img').src;
             const cantidadProducto = parseInt(producto.querySelector('.contador').textContent);
 
