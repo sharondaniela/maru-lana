@@ -8,7 +8,7 @@ TÍTULO: Formato de moneda colombiana en precios del carrito
 PRIORIDAD: Alta
 ESTIMACIÓN: 2 puntos (1-2 horas)
 SPRINT: Sprint 1
-ESTADO: Por implementar
+ESTADO: Implementado ✅
 
 ═══════════════════════════════════════════════════════════════════════════════
 1. DESCRIPCIÓN
@@ -25,178 +25,75 @@ Para entender fácilmente los valores sin tener que contar ceros
 CA1: Los precios deben mostrarse con formato colombiano: $120.000
 CA2: El total del carrito debe usar puntos como separador de miles
 CA3: No mostrar decimales (sin .00 al final)
-CA4: El formato debe aplicarse a:
-     - Precio unitario de cada producto en el carrito
-     - Total general del carrito
-CA5: Mantener el símbolo $ antes del número
+CA4: El formato debe aplicarse a precio unitario y total del carrito
+CA5: Carrito vacío debe mostrar $0 (sin decimales)
+CA6: Los precios deben parsearse correctamente desde el HTML
 
-FORMATO ACTUAL:  $120000.00  ❌
-FORMATO DESEADO: $120.000    ✅
-
-═══════════════════════════════════════════════════════════════════════════════
-3. TAREAS TÉCNICAS
-═══════════════════════════════════════════════════════════════════════════════
-
-Tarea 1: Modificar línea 40 de carrito.js (precio unitario)
-Tarea 2: Modificar línea 55 de carrito.js (total del carrito)
-Tarea 3: Probar con diferentes cantidades y precios
-Tarea 4: Verificar que funcione con números grandes (millones)
+FORMATO ANTERIOR:  $120000.00  ❌
+FORMATO ACTUAL:    $120.000    ✅
 
 ═══════════════════════════════════════════════════════════════════════════════
-4. ARCHIVOS A MODIFICAR
+3. TAREAS TÉCNICAS REALIZADAS
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ Tarea 1: Modificar línea 17 de carrito.js (carrito vacío)
+✅ Tarea 2: Modificar líneas 40-43 de carrito.js (precio unitario)
+✅ Tarea 3: Modificar líneas 58-67 de carrito.js (total del carrito)
+✅ Tarea 4: Modificar línea 35 de productos.js (parsing de precios)
+✅ Tarea 5: Probar con diferentes cantidades y precios
+✅ Tarea 6: Verificar funcionamiento completo
+
+═══════════════════════════════════════════════════════════════════════════════
+4. ARCHIVOS MODIFICADOS
 ═══════════════════════════════════════════════════════════════════════════════
 
 public/scripts/carrito.js
-   - Línea 40: Formato precio unitario en renderizado
-   - Línea 55: Formato total del carrito
+   - Línea 17: Total cuando carrito está vacío
+   - Líneas 40-43: Formato precio unitario
+   - Líneas 58-67: Formato total del carrito
+
+public/scripts/productos.js
+   - Línea 35: Corrección parsing de precios
 
 ═══════════════════════════════════════════════════════════════════════════════
 5. IMPLEMENTACIÓN DETALLADA
 ═══════════════════════════════════════════════════════════════════════════════
 
-A) Modificar línea 40 de carrito.js
-────────────────────────────────────────────────────────────────────────────────
-CÓDIGO ACTUAL (línea 40):
-    <p>Precio: $${precioNumerico.toFixed(2)}</p>
+A) Modificación línea 17 de carrito.js
+ANTES: resumenCarritoDiv.innerHTML = '<h3>Total: $0.00</h3>';
+DESPUÉS: resumenCarritoDiv.innerHTML = '<h3>Total: $0</h3>';
+PROPÓSITO: Eliminar decimales cuando el carrito está vacío
 
-CAMBIAR POR:
-    <p>Precio: $${precioNumerico.toLocaleString('es-CO', {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0
-    })}</p>
+B) Modificación líneas 40-43 de carrito.js
+ANTES: <p>Precio: $${precioNumerico.toFixed(2)}</p>
+DESPUÉS: <p>Precio: $${precioNumerico.toLocaleString('es-CO', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+})}</p>
+PROPÓSITO: Mostrar precio unitario con formato colombiano
 
-B) Modificar línea 55 de carrito.js
-────────────────────────────────────────────────────────────────────────────────
-CÓDIGO ACTUAL (línea 55):
-    totalCarritoPrecioSpan.textContent = totalCarrito.toFixed(2);
+C) Modificación líneas 58-67 de carrito.js
+ANTES: totalCarritoPrecioSpan.textContent = totalCarrito.toFixed(2);
+DESPUÉS: totalCarritoPrecioSpan.textContent = '$' + totalCarrito.toLocaleString('es-CO', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+});
+PROPÓSITO: Mostrar total del carrito con formato colombiano
 
-CAMBIAR POR:
-    totalCarritoPrecioSpan.textContent = '$' + totalCarrito.toLocaleString('es-CO', {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0
-    });
+D) Modificación línea 35 de productos.js (CRÍTICO)
+ANTES: const precio = parseFloat(precioTexto.replace('$', '').trim());
+DESPUÉS: const precio = parseFloat(precioTexto.replace('$', '').replaceAll('.', '').trim());
 
-═══════════════════════════════════════════════════════════════════════════════
-6. CÓDIGO COMPLETO DE LA MODIFICACIÓN
-═══════════════════════════════════════════════════════════════════════════════
-
-En public/scripts/carrito.js, reemplazar el bloque de la línea 36-46:
-
-ANTES:
-productoDiv.innerHTML = `
-    <img src="${producto.imagenSrc}" alt="${producto.nombre}">
-    <div class="info-producto">
-        <h4>${producto.nombre}</h4>
-        <p>Precio: $${precioNumerico.toFixed(2)}</p>
-        <div class="cantidad">
-            <button class="btn-menos" data-nombre="${producto.nombre}">-</button>
-            <span>${cantidadNumerica}</span>
-            <button class="btn-mas" data-nombre="${producto.nombre}">+</button>
-        </div>
-    </div>
-    <button class="btn-eliminar" data-nombre="${producto.nombre}">Eliminar</button>
-`;
-
-DESPUÉS:
-productoDiv.innerHTML = `
-    <img src="${producto.imagenSrc}" alt="${producto.nombre}">
-    <div class="info-producto">
-        <h4>${producto.nombre}</h4>
-        <p>Precio: $${precioNumerico.toLocaleString('es-CO', {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0
-        })}</p>
-        <div class="cantidad">
-            <button class="btn-menos" data-nombre="${producto.nombre}">-</button>
-            <span>${cantidadNumerica}</span>
-            <button class="btn-mas" data-nombre="${producto.nombre}">+</button>
-        </div>
-    </div>
-    <button class="btn-eliminar" data-nombre="${producto.nombre}">Eliminar</button>
-`;
-
-Y reemplazar líneas 53-59:
-
-ANTES:
-const totalCarritoPrecioSpan = document.getElementById('total-carrito-precio');
-if (totalCarritoPrecioSpan) {
-    totalCarritoPrecioSpan.textContent = totalCarrito.toFixed(2);
-} else {
-    resumenCarritoDiv.innerHTML = `<h3>Total: $${totalCarrito.toFixed(2)}</h3>`;
-}
-
-DESPUÉS:
-const totalCarritoPrecioSpan = document.getElementById('total-carrito-precio');
-if (totalCarritoPrecioSpan) {
-    totalCarritoPrecioSpan.textContent = '$' + totalCarrito.toLocaleString('es-CO', {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0
-    });
-} else {
-    resumenCarritoDiv.innerHTML = `<h3>Total: $${totalCarrito.toLocaleString('es-CO', {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0
-    })}</h3>`;
-}
+PROBLEMA: parseFloat("120.000") = 120 ❌
+SOLUCIÓN: "$120.000" → "120000" → 120000 ✅
+PROPÓSITO: Parsear correctamente precios con formato colombiano
 
 ═══════════════════════════════════════════════════════════════════════════════
-7. FLUJO DE USUARIO
+6. RESULTADO ANTES/DESPUÉS
 ═══════════════════════════════════════════════════════════════════════════════
 
-1. Usuario navega a carrito.html
-2. Usuario ve "Ruana Cafe" con precio: $120.000 (antes: $120000.00)
-3. Usuario ve total del carrito: $360.000 (antes: $360000.00)
-4. Formato es claro y fácil de leer
-
-═══════════════════════════════════════════════════════════════════════════════
-8. CASOS DE PRUEBA
-═══════════════════════════════════════════════════════════════════════════════
-
-CP1: Precio bajo
-Producto: $5.000
-Resultado: Se muestra correctamente con punto
-
-CP2: Precio medio
-Producto: $120.000
-Resultado: Se muestra correctamente con punto
-
-CP3: Precio alto
-Total: $1.500.000
-Resultado: Se muestra correctamente con dos puntos
-
-CP4: Sin decimales
-Cualquier precio
-Resultado: No muestra .00 al final
-
-CP5: Total del carrito
-3 productos de $120.000
-Resultado: Total muestra $360.000
-
-═══════════════════════════════════════════════════════════════════════════════
-9. DEFINICIÓN DE TERMINADO
-═══════════════════════════════════════════════════════════════════════════════
-
-Código modificado en carrito.js
-Precios unitarios con formato correcto
-Total con formato correcto
-Sin decimales (.00) en ningún precio
-Probado con diferentes valores
-Sin errores en consola
-Código subido al repositorio
-
-═══════════════════════════════════════════════════════════════════════════════
-10. EXPLICACIÓN TÉCNICA
-═══════════════════════════════════════════════════════════════════════════════
-
-toLocaleString('es-CO') convierte números al formato colombiano:
-- 'es-CO' = español de Colombia
-- minimumFractionDigits: 0 = no mostrar decimales
-- maximumFractionDigits: 0 = máximo 0 decimales
-
-Ejemplos:
-120000 → "120.000"
-1500000 → "1.500.000"
-5000 → "5.000"
+ANTES: Precio $120000.00 | Total $360000.00 | Vacío $0.00
+DESPUÉS: Precio $120.000 ✅ | Total $360.000 ✅ | Vacío $0 ✅
 
 ═══════════════════════════════════════════════════════════════════════════════
                             FIN DE LA HISTORIA DE USUARIO
