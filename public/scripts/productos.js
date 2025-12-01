@@ -5,14 +5,22 @@ document.addEventListener('DOMContentLoaded', () => {
           const contadorSpan = producto.querySelector('.contador');
           let cantidad = parseInt(contadorSpan.textContent);
 
-          // 👉 LINEAS NUEVAS PARA MULTIPLICAR (HU de tu compañero)
+          // 👉 LINEAS NUEVAS PARA MULTIPLICAR (HU de tu compañero) - OPCIONAL
           const unitPriceElement = producto.querySelector(".unit_price");
           const totalPriceElement = producto.querySelector(".total_price");
-          let unitPrice = parseInt(unitPriceElement.dataset.price);
+          let unitPrice = null;
+
+          // Solo ejecutar si los elementos existen
+          if (unitPriceElement && totalPriceElement && unitPriceElement.dataset.price) {
+              unitPrice = parseInt(unitPriceElement.dataset.price);
+          }
 
           function actualizarTotal() {
-              const total = cantidad * unitPrice;
-              totalPriceElement.textContent = "$" + total.toLocaleString("es-CO");
+              // Solo actualizar si los elementos existen
+              if (unitPrice && totalPriceElement) {
+                  const total = cantidad * unitPrice;
+                  totalPriceElement.textContent = "$" + total.toLocaleString("es-CO");
+              }
           }
           actualizarTotal();
           // 👈 HASTA AQUÍ
