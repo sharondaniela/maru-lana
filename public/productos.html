@@ -58,8 +58,21 @@
             </div>
         </section>
 
+        <section class="busqueda-container">
+            <input
+                type="search"
+                id="busqueda-productos"
+                class="input-busqueda"
+                placeholder="Buscar productos..."
+                autocomplete="off"
+            >
+        </section>
+
         <section class="productos">
             <h2>Nuestros Productos</h2>
+            <div id="mensaje-sin-resultados" class="mensaje-sin-resultados" style="display:none;">
+                <p>No se encontraron productos que coincidan con tu búsqueda.</p>
+            </div>
             <div class="contenedor-productos">
                 <div class="producto">
                     <img src="imagenes/ruanacafetradicional.png.jpg" alt="Ruana Café Tradicional">

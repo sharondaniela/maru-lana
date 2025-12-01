@@ -1,0 +1,92 @@
+═══════════════════════════════════════════════════════════════════════════════
+                    HISTORIA DE USUARIO #2
+                    Sistema de E-commerce - Ruanas Maru Lana
+═══════════════════════════════════════════════════════════════════════════════
+
+ID: HU-002
+TÍTULO: Búsqueda de productos por nombre
+PRIORIDAD: Media
+ESTIMACIÓN: 5 puntos (4-6 horas)
+SPRINT: Sprint 1
+ESTADO: Por implementar
+
+═══════════════════════════════════════════════════════════════════════════════
+1. DESCRIPCIÓN
+═══════════════════════════════════════════════════════════════════════════════
+
+Como usuario visitante de la tienda
+Quiero buscar productos por nombre usando un campo de búsqueda
+Para encontrar rápidamente lo que necesito sin revisar todo el catálogo
+
+═══════════════════════════════════════════════════════════════════════════════
+2. CRITERIOS DE ACEPTACIÓN
+═══════════════════════════════════════════════════════════════════════════════
+
+CA1: Debe existir un campo de búsqueda visible en productos.html
+CA2: La búsqueda debe filtrar productos mientras el usuario escribe
+CA3: La búsqueda NO debe distinguir entre mayúsculas y minúsculas
+CA4: Debe mostrar todos los productos que contengan el texto buscado
+CA5: Si no hay resultados, mostrar mensaje 'No se encontraron productos'
+CA6: Al borrar el texto, mostrar todos los productos nuevamente
+
+═══════════════════════════════════════════════════════════════════════════════
+3. TAREAS TÉCNICAS
+═══════════════════════════════════════════════════════════════════════════════
+
+Tarea 1: Agregar input de búsqueda en productos.html
+Tarea 2: Estilizar el campo de búsqueda en productos.css
+Tarea 3: Crear función filtrarProductos() en productos.js
+Tarea 4: Implementar listener del evento input
+Tarea 5: Mostrar/ocultar productos según coincidencia
+Tarea 6: Agregar mensaje de productos no encontrados
+Tarea 7: Realizar pruebas con diferentes búsquedas
+
+═══════════════════════════════════════════════════════════════════════════════
+4. ARCHIVOS A MODIFICAR
+═══════════════════════════════════════════════════════════════════════════════
+
+public/productos.html - Agregar input de búsqueda y mensaje sin resultados
+public/css/productos.css - Estilos para búsqueda
+public/scripts/productos.js - Lógica de filtrado
+
+═══════════════════════════════════════════════════════════════════════════════
+5. IMPLEMENTACIÓN
+═══════════════════════════════════════════════════════════════════════════════
+
+A) HTML:
+<section class="busqueda-container">
+    <input type="search" id="busqueda-productos" placeholder="Buscar productos...">
+</section>
+<div id="mensaje-sin-resultados" style="display:none">
+    No se encontraron productos
+</div>
+
+B) JavaScript:
+function filtrarProductos(texto) {
+    const productos = document.querySelectorAll('.producto');
+    let encontrados = 0;
+    productos.forEach(p => {
+        const nombre = p.querySelector('h3').textContent.toLowerCase();
+        if (nombre.includes(texto.toLowerCase())) {
+            p.style.display = 'block';
+            encontrados++;
+        } else {
+            p.style.display = 'none';
+        }
+    });
+    document.getElementById('mensaje-sin-resultados').style.display = 
+        (encontrados === 0 && texto) ? 'block' : 'none';
+}
+
+═══════════════════════════════════════════════════════════════════════════════
+6. CASOS DE PRUEBA
+═══════════════════════════════════════════════════════════════════════════════
+
+CP1: Escribir 'cafe' → Muestra 'Ruana Cafe Tradicional'
+CP2: Escribir 'BLANCA' → Muestra 'Ruana Blanca'
+CP3: Escribir 'bufanda' → Mensaje 'No se encontraron productos'
+CP4: Borrar texto → Muestra todos los productos
+
+═══════════════════════════════════════════════════════════════════════════════
+                            FIN DE LA HISTORIA DE USUARIO
+═══════════════════════════════════════════════════════════════════════════════

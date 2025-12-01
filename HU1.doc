@@ -1,0 +1,100 @@
+═══════════════════════════════════════════════════════════════════════════════
+                    HISTORIA DE USUARIO #1
+                    Sistema de E-commerce - Ruanas Maru Lana
+═══════════════════════════════════════════════════════════════════════════════
+
+ID: HU-001
+TÍTULO: Formato de moneda colombiana en precios del carrito
+PRIORIDAD: Alta
+ESTIMACIÓN: 2 puntos (1-2 horas)
+SPRINT: Sprint 1
+ESTADO: Implementado ✅
+
+═══════════════════════════════════════════════════════════════════════════════
+1. DESCRIPCIÓN
+═══════════════════════════════════════════════════════════════════════════════
+
+Como usuario visitante de la tienda
+Quiero ver los precios en formato de moneda colombiana con separador de miles
+Para entender fácilmente los valores sin tener que contar ceros
+
+═══════════════════════════════════════════════════════════════════════════════
+2. CRITERIOS DE ACEPTACIÓN
+═══════════════════════════════════════════════════════════════════════════════
+
+CA1: Los precios deben mostrarse con formato colombiano: $120.000
+CA2: El total del carrito debe usar puntos como separador de miles
+CA3: No mostrar decimales (sin .00 al final)
+CA4: El formato debe aplicarse a precio unitario y total del carrito
+CA5: Carrito vacío debe mostrar $0 (sin decimales)
+CA6: Los precios deben parsearse correctamente desde el HTML
+
+FORMATO ANTERIOR:  $120000.00  ❌
+FORMATO ACTUAL:    $120.000    ✅
+
+═══════════════════════════════════════════════════════════════════════════════
+3. TAREAS TÉCNICAS REALIZADAS
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ Tarea 1: Modificar línea 17 de carrito.js (carrito vacío)
+✅ Tarea 2: Modificar líneas 40-43 de carrito.js (precio unitario)
+✅ Tarea 3: Modificar líneas 58-67 de carrito.js (total del carrito)
+✅ Tarea 4: Modificar línea 35 de productos.js (parsing de precios)
+✅ Tarea 5: Probar con diferentes cantidades y precios
+✅ Tarea 6: Verificar funcionamiento completo
+
+═══════════════════════════════════════════════════════════════════════════════
+4. ARCHIVOS MODIFICADOS
+═══════════════════════════════════════════════════════════════════════════════
+
+public/scripts/carrito.js
+   - Línea 17: Total cuando carrito está vacío
+   - Líneas 40-43: Formato precio unitario
+   - Líneas 58-67: Formato total del carrito
+
+public/scripts/productos.js
+   - Línea 35: Corrección parsing de precios
+
+═══════════════════════════════════════════════════════════════════════════════
+5. IMPLEMENTACIÓN DETALLADA
+═══════════════════════════════════════════════════════════════════════════════
+
+A) Modificación línea 17 de carrito.js
+ANTES: resumenCarritoDiv.innerHTML = '<h3>Total: $0.00</h3>';
+DESPUÉS: resumenCarritoDiv.innerHTML = '<h3>Total: $0</h3>';
+PROPÓSITO: Eliminar decimales cuando el carrito está vacío
+
+B) Modificación líneas 40-43 de carrito.js
+ANTES: <p>Precio: $${precioNumerico.toFixed(2)}</p>
+DESPUÉS: <p>Precio: $${precioNumerico.toLocaleString('es-CO', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+})}</p>
+PROPÓSITO: Mostrar precio unitario con formato colombiano
+
+C) Modificación líneas 58-67 de carrito.js
+ANTES: totalCarritoPrecioSpan.textContent = totalCarrito.toFixed(2);
+DESPUÉS: totalCarritoPrecioSpan.textContent = '$' + totalCarrito.toLocaleString('es-CO', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+});
+PROPÓSITO: Mostrar total del carrito con formato colombiano
+
+D) Modificación línea 35 de productos.js (CRÍTICO)
+ANTES: const precio = parseFloat(precioTexto.replace('$', '').trim());
+DESPUÉS: const precio = parseFloat(precioTexto.replace('$', '').replaceAll('.', '').trim());
+
+PROBLEMA: parseFloat("120.000") = 120 ❌
+SOLUCIÓN: "$120.000" → "120000" → 120000 ✅
+PROPÓSITO: Parsear correctamente precios con formato colombiano
+
+═══════════════════════════════════════════════════════════════════════════════
+6. RESULTADO ANTES/DESPUÉS
+═══════════════════════════════════════════════════════════════════════════════
+
+ANTES: Precio $120000.00 | Total $360000.00 | Vacío $0.00
+DESPUÉS: Precio $120.000 ✅ | Total $360.000 ✅ | Vacío $0 ✅
+
+═══════════════════════════════════════════════════════════════════════════════
+                            FIN DE LA HISTORIA DE USUARIO
+═══════════════════════════════════════════════════════════════════════════════

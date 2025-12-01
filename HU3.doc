@@ -1,0 +1,161 @@
+═══════════════════════════════════════════════════════════════════════════════
+                    HISTORIA DE USUARIO #3
+                    Sistema de E-commerce - Ruanas Maru Lana
+═══════════════════════════════════════════════════════════════════════════════
+
+ID: HU-003
+TÍTULO: Botón para vaciar todo el carrito de compras
+PRIORIDAD: Media
+ESTIMACIÓN: 3 puntos (2-3 horas)
+SPRINT: Sprint 1
+ESTADO: Por implementar
+
+═══════════════════════════════════════════════════════════════════════════════
+1. DESCRIPCIÓN
+═══════════════════════════════════════════════════════════════════════════════
+
+Como usuario de la tienda
+Quiero tener un botón para vaciar todo mi carrito de una vez
+Para no tener que eliminar producto por producto cuando quiero empezar de nuevo
+
+═══════════════════════════════════════════════════════════════════════════════
+2. CRITERIOS DE ACEPTACIÓN
+═══════════════════════════════════════════════════════════════════════════════
+
+CA1: Debe existir un botón "Vaciar Carrito" en carrito.html
+CA2: El botón debe mostrarse solo cuando hay productos en el carrito
+CA3: Al hacer clic, mostrar confirmación
+CA4: Si confirma, elimina TODOS los productos del carrito
+CA5: Actualiza el total a $0
+CA6: Actualiza el badge del navbar a 0
+CA7: Muestra mensaje "Tu carrito está vacío"
+CA8: Botón con estilo distintivo (color rojo)
+
+═══════════════════════════════════════════════════════════════════════════════
+3. TAREAS TÉCNICAS
+═══════════════════════════════════════════════════════════════════════════════
+
+Tarea 1: Agregar botón en carrito.html
+Tarea 2: Agregar estilos CSS en carrito.css
+Tarea 3: Crear función vaciarCarrito() en carrito.js
+Tarea 4: Agregar confirmación
+Tarea 5: Limpiar localStorage
+Tarea 6: Actualizar badge del navbar
+Tarea 7: Re-renderizar carrito vacío
+Tarea 8: Probar funcionalidad completa
+
+═══════════════════════════════════════════════════════════════════════════════
+4. ARCHIVOS A MODIFICAR
+═══════════════════════════════════════════════════════════════════════════════
+
+public/carrito.html - Agregar botón Vaciar Carrito
+public/css/carrito.css - Estilos para el botón
+public/scripts/carrito.js - Función vaciarCarrito()
+
+═══════════════════════════════════════════════════════════════════════════════
+5. IMPLEMENTACIÓN DETALLADA
+═══════════════════════════════════════════════════════════════════════════════
+
+A) Modificar carrito.html (línea 40-43)
+────────────────────────────────────────────────────────────────────────────────
+Agregar botón antes de los otros botones:
+
+<div class="botones-carrito">
+    <button id="btn-vaciar-carrito" class="btn-vaciar">Vaciar Carrito</button>
+    <button id="btn-seguir-comprando" class="btn-secundario">Seguir Comprando</button>
+    <button id="btn-proceder-compra" class="btn-primario">Proceder a la Compra</button>
+</div>
+
+
+B) Agregar en carrito.css
+────────────────────────────────────────────────────────────────────────────────
+.btn-vaciar {
+    background-color: #e74c3c;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-vaciar:hover {
+    background-color: #c0392b;
+}
+
+
+C) Agregar función en carrito.js (después línea 105)
+────────────────────────────────────────────────────────────────────────────────
+function vaciarCarrito() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    
+    if (carrito.length === 0) {
+        alert('El carrito ya está vacío.');
+        return;
+    }
+    
+    const confirmar = confirm('¿Seguro que deseas vaciar todo el carrito?');
+    
+    if (confirmar) {
+        localStorage.removeItem('carrito');
+        renderizarCarrito();
+        actualizarNumeroCarritoEnNavbar();
+        alert('Carrito vaciado exitosamente.');
+    }
+}
+
+
+D) Agregar event listener (después línea 148)
+────────────────────────────────────────────────────────────────────────────────
+const btnVaciarCarrito = document.getElementById('btn-vaciar-carrito');
+
+if (btnVaciarCarrito) {
+    btnVaciarCarrito.addEventListener('click', vaciarCarrito);
+}
+
+═══════════════════════════════════════════════════════════════════════════════
+6. FLUJO DE USUARIO
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Usuario tiene 5 productos en el carrito
+2. Usuario ve botón rojo "Vaciar Carrito"
+3. Usuario hace clic en "Vaciar Carrito"
+4. Sistema muestra confirmación
+5. Usuario hace clic en "Aceptar"
+6. Sistema elimina todos los productos
+7. Sistema muestra "Tu carrito está vacío"
+8. Badge cambia a 0
+9. Total muestra $0
+
+═══════════════════════════════════════════════════════════════════════════════
+7. CASOS DE PRUEBA
+═══════════════════════════════════════════════════════════════════════════════
+
+CP1: Vaciar carrito con productos
+Carrito con 3 productos → Clic Vaciar → Confirmar → Carrito vacío
+
+CP2: Cancelar vaciado
+Carrito con 2 productos → Clic Vaciar → Cancelar → Carrito sin cambios
+
+CP3: Vaciar carrito vacío
+Carrito vacío → Clic Vaciar → Mensaje "El carrito ya está vacío"
+
+CP4: Badge actualizado
+Badge muestra 5 → Vaciar carrito → Badge cambia a 0
+
+═══════════════════════════════════════════════════════════════════════════════
+8. DEFINICIÓN DE TERMINADO
+═══════════════════════════════════════════════════════════════════════════════
+
+Botón agregado en HTML
+Estilos CSS aplicados
+Función vaciarCarrito() implementada
+Confirmación funciona
+localStorage se limpia
+Badge se actualiza a 0
+Probado todos los casos
+Código subido al repositorio
+
+═══════════════════════════════════════════════════════════════════════════════
+                            FIN DE LA HISTORIA DE USUARIO
+═══════════════════════════════════════════════════════════════════════════════
