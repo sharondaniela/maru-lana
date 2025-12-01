@@ -122,4 +122,44 @@ document.addEventListener('DOMContentLoaded', () => {
             startSlider();
         });
     }
+
+    // ═══════════════════════════════════════════════════════════════
+    // BÚSQUEDA DE PRODUCTOS (HU2)
+    // ═══════════════════════════════════════════════════════════════
+
+    function filtrarProductos(terminoBusqueda) {
+        const productos = document.querySelectorAll('.producto');
+        const mensajeSinResultados = document.getElementById('mensaje-sin-resultados');
+        const termino = terminoBusqueda.toLowerCase().trim();
+        let productosEncontrados = 0;
+
+        productos.forEach(producto => {
+            const nombreProducto = producto.querySelector('h3').textContent;
+            const nombreMinusculas = nombreProducto.toLowerCase();
+
+            if (nombreMinusculas.includes(termino)) {
+                producto.style.display = 'block';
+                productosEncontrados++;
+            } else {
+                producto.style.display = 'none';
+            }
+        });
+
+        // Mostrar u ocultar mensaje de "sin resultados"
+        if (mensajeSinResultados) {
+            if (productosEncontrados === 0 && termino !== '') {
+                mensajeSinResultados.style.display = 'block';
+            } else {
+                mensajeSinResultados.style.display = 'none';
+            }
+        }
+    }
+
+    // Event listener para el campo de búsqueda
+    const inputBusqueda = document.getElementById('busqueda-productos');
+    if (inputBusqueda) {
+        inputBusqueda.addEventListener('input', function(e) {
+            filtrarProductos(e.target.value);
+        });
+    }
 });

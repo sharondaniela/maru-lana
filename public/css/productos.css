@@ -288,3 +288,64 @@ body {
         height: 150px;
     }
 }
+/* ═══════════════════════════════════════════════════════════════
+   ESTILOS PARA BÚSQUEDA DE PRODUCTOS (HU2)
+   ═══════════════════════════════════════════════════════════════ */
+
+.busqueda-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.input-busqueda {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-family: Arial, sans-serif;
+}
+
+.input-busqueda:focus {
+    border-color: #8B4513;
+    box-shadow: 0 0 8px rgba(139, 69, 19, 0.2);
+}
+
+.input-busqueda::placeholder {
+    color: #999;
+}
+
+.mensaje-sin-resultados {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    font-size: 18px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.mensaje-sin-resultados p {
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .busqueda-container {
+        padding: 0 15px;
+        margin: 20px auto;
+    }
+
+    .input-busqueda {
+        font-size: 14px;
+        padding: 12px 15px;
+    }
+
+    .mensaje-sin-resultados {
+        font-size: 16px;
+        padding: 30px 15px;
+    }
+}
