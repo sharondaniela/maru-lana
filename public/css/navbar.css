@@ -1,114 +1,127 @@
+/* -------- reset básico para header/menu -------- */
 .navbar {
-    background-color: #2c3e50;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1em 2.5em;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+  background-color: #2c3e50;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  height: 45px !important;
 }
 
+/* logo */
 .logo {
-    margin: 0;
-    font-size: 2.2em;
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    transition: color 0.3s ease;
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
 }
 
-.logo:hover {
-    color: #388e3c;
-}
-
+/* menú (desktop) */
 .menu {
-    list-style: none;
-    display: flex;
-    gap: 2em;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 1.6rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
 }
 
 .menu li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.05em;
-    padding: 0.5em 1em;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.15s;
 }
 
 .menu li a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    transform: translateY(-2px);
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-2px);
 }
 
-.menu li a .item-count {
-    background-color: #e74c3c;
-    color: white;
-    border-radius: 50%;
-    padding: 3px 8px;
-    margin-left: 8px;
-    font-size: 0.8em;
-    font-weight: 700;
-    vertical-align: middle;
-    display: inline-block;
-    min-width: 20px;
-    text-align: center;
+/* -------- botón menú (icono) -------- */
+/* Botón menú hamburguesa */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
 }
 
+/* Barras del icono */
+.menu-toggle .bar {
+  width: 100%;
+  height: 4px;
+  background-color: white;
+  border-radius: 3px;
+  display: block;
+  transition: 0.3s;
+}
+
+/* animación cuando está activo */
+.menu-toggle.active .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* -------- responsive: esconder menú, mostrar icono -------- */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1em 1.5em;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-    }
 
-    .logo {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 1em;
-        font-size: 2em;
-    }
+  /* mostrar icono */
+  .menu-toggle {
+    display: flex;
+  }
 
-    .menu {
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        gap: 0.8em;
-    }
+  /* ocultar menú normal */
+  .menu {
+    position: absolute;
+    top: 40px;                     /* debajo del header */
+    right: 0;
+    width: 100%;
+    max-width: 340px;              /* ancho del panel desplegable */
+    background: #2c3e50;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px 0;
+    box-shadow: -6px 12px 30px rgba(0,0,0,0.25);
+    transform: translateX(110%);   /* fuera de la pantalla por defecto */
+    transition: transform 0.28s cubic-bezier(.2,.8,.2,1);
+    border-left: 4px solid rgba(255,255,255,0.03);
+    z-index: 1150;
+  }
 
-    .menu li {
-        width: 100%;
-        text-align: center;
-    }
+  /* menú visible (clase .show añadida por JS) */
+  .menu.show {
+    transform: translateX(0);
+  }
 
-    .menu li a {
-        display: block;
-        padding: 0.8em 1em;
-        font-size: 1em;
-    }
-}
+  .menu li {
+    width: 100%;
+  }
 
-@media (max-width: 480px) {
-    .navbar {
-        padding: 0.8em 1em;
-    }
-    .logo {
-        font-size: 1.8em;
-    }
-    .menu li a {
-        font-size: 0.95em;
-        padding: 0.7em 0.8em;
-    }
+  .menu li a {
+    display: block;
+    padding: 12px 20px;
+    font-size: 1.02rem;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
 }

@@ -85,3 +85,36 @@ function actualizarNumeroCarritoEnNavbar() {
         itemCountSpan.style.display = totalItems > 0 ? 'inline-block' : 'none';
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.getElementById('menu-toggle');
+  const menu = document.getElementById('main-menu');
+
+  if (!toggleBtn || !menu) return;
+
+  toggleBtn.addEventListener('click', () => {
+    const expanded = toggleBtn.classList.toggle('active'); // animación del icono
+    menu.classList.toggle('show');                        // muestra/oculta menú
+    toggleBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+  });
+
+  // Cerrar al pulsar fuera del menú (opcional, elegante)
+  document.addEventListener('click', (e) => {
+    if (!menu.classList.contains('show')) return;
+    const insideMenu = menu.contains(e.target) || toggleBtn.contains(e.target);
+    if (!insideMenu) {
+      menu.classList.remove('show');
+      toggleBtn.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Cerrar con Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('show')) {
+      menu.classList.remove('show');
+      toggleBtn.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
