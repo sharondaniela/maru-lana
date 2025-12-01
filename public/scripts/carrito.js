@@ -152,12 +152,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnSeguirComprando) {
         btnSeguirComprando.addEventListener('click', () => {
-            window.location.href = 'productos.html'; 
+            window.location.href = 'productos.html';
         });
     }
 
-   
+    // ═══════════════════════════════════════════════════════════════
+    // VACIAR CARRITO (HU3)
+    // ═══════════════════════════════════════════════════════════════
+    const btnVaciarCarrito = document.getElementById('btn-vaciar-carrito');
+    if (btnVaciarCarrito) {
+        btnVaciarCarrito.addEventListener('click', () => {
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+            if (carrito.length === 0) {
+                alert('Tu carrito ya está vacío.');
+                return;
+            }
+
+            const confirmacion = confirm('¿Estás seguro de que deseas vaciar todo el carrito? Esta acción no se puede deshacer.');
+
+            if (confirmacion) {
+                localStorage.setItem('carrito', JSON.stringify([]));
+                renderizarCarrito();
+                actualizarNumeroCarritoEnNavbar();
+                alert('El carrito ha sido vaciado exitosamente.');
+            }
+        });
+    }
+
+
     renderizarCarrito();
-    
-    actualizarNumeroCarritoEnNavbar(); 
+
+    actualizarNumeroCarritoEnNavbar();
 });
