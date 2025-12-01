@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
     <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/productos.css">
-    <link rel="stylesheet" href="css/footer.css">
-</head>
+    <link rel="stylesheet" href="css/productos.css"> <link rel="stylesheet" href="css/footer.css"></head>
 <body>
 <header>
   <nav class="navbar">
@@ -37,135 +35,101 @@
     <span></span>
 </div>
 
-
-<main>
-    <section class="slider-container">
-        <div class="slider-wrapper">
-            <div class="slider-slide active">
-                <img src="imagenes/sacolana.jpg" alt="Oferta 1">
-                <div class="caption">¡Grandes descuentos en ropa!</div>
+    <main>
+        <section class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slider-slide active">
+                    <img src="imagenes/sacolana.jpg" alt="Oferta 1">
+                    <div class="caption">¡Grandes descuentos en ropa!</div>
+                </div>
+                <div class="slider-slide">
+                    <img src="imagenes/Sacocrochet.jpg" alt="Nueva Colección">
+                    <div class="caption">Descubre nuestra nueva colección de accesorios.</div>
+                </div>
+                <div class="slider-slide">
+                    <img src="imagenes/ruanablancatresrayas.jpg" alt="Liquidación Final">
+                    <div class="caption">Hasta 50% de descuento en artículos seleccionados.</div>
+                </div>
             </div>
-            <div class="slider-slide">
-                <img src="imagenes/Sacocrochet.jpg" alt="Nueva Colección">
-                <div class="caption">Descubre nuestra nueva colección de accesorios.</div>
+            <div class="slider-dots">
+                <span class="dot active" data-slide-index="0"></span>
+                <span class="dot" data-slide-index="1"></span>
+                <span class="dot" data-slide-index="2"></span>
             </div>
-            <div class="slider-slide">
-                <img src="imagenes/ruanablancatresrayas.jpg" alt="Liquidación Final">
-                <div class="caption">Hasta 50% de descuento en artículos seleccionados.</div>
-            </div>
-        </div>
-        <div class="slider-dots">
-            <span class="dot active" data-slide-index="0"></span>
-            <span class="dot" data-slide-index="1"></span>
-            <span class="dot" data-slide-index="2"></span>
-        </div>
-    </section>
+        </section>
 
-    <section class="productos">
-        <h2>Nuestros Productos</h2>
-
-        <div class="contenedor-productos">
-
-            <!-- PRODUCTO 1 -->
-            <div class="producto">
-                <img src="imagenes/ruanacafetradicional.png.jpg" alt="Ruana Café Tradicional">
-                <h3>Ruana Cafe Tradicional</h3>
-                <p class="unit_price" data-price="120000">$120.000</p>
-
-                <div class="cantidad">
-                    <button class="btn-menos">-</button>
-                    <span class="contador">1</span>
-                    <button class="btn-mas">+</button>
+        <section class="productos">
+            <h2>Nuestros Productos</h2>
+            <div class="contenedor-productos">
+                <div class="producto">
+                    <img src="imagenes/ruanacafetradicional.png.jpg" alt="Ruana Café Tradicional">
+                    <h3>Ruana Cafe Tradicional</h3>
+                    <p>$120.000</p>
+                    <div class="cantidad">
+                        <button class="btn-menos">-</button>
+                        <span class="contador">1</span>
+                        <button class="btn-mas">+</button>
+                    </div>
+                    <button class="btn-agregar">Agregar</button>
                 </div>
 
-                <p>Total: <span class="total_price">$120.000</span></p>
-                <button class="btn-agregar">Agregar</button>
-            </div>
-
-            <!-- PRODUCTO 2 -->
-            <div class="producto">
-                <img src="imagenes/ruanablanca.jpg" alt="Ruana Blanca">
-                <h3>Ruana Blanca</h3>
-                <p class="unit_price" data-price="120000">$120.000</p>
-
-                <div class="cantidad">
-                    <button class="btn-menos">-</button>
-                    <span class="contador">1</span>
-                    <button class="btn-mas">+</button>
+                <div class="producto">
+                    <img src="imagenes/ruanablanca.jpg" alt="Ruana Blanca">
+                    <h3>Ruana Blanca</h3>
+                    <p>$120.000</p>
+                    <div class="cantidad">
+                        <button class="btn-menos">-</button>
+                        <span class="contador">1</span>
+                        <button class="btn-mas">+</button>
+                    </div>
+                    <button class="btn-agregar">Agregar</button>
                 </div>
-
-                <p>Total: <span class="total_price">$120.000</span></p>
-                <button class="btn-agregar">Agregar</button>
-            </div>
-
-            <!-- PRODUCTO 3 -->
-            <div class="producto">
-                <img src="imagenes/Sacocrochet.jpg" alt="Saco Crochet">
-                <h3>Saco Crochet</h3>
-                <p class="unit_price" data-price="120000">$120.000</p>
-
-                <div class="cantidad">
-                    <button class="btn-menos">-</button>
-                    <span class="contador">1</span>
-                    <button class="btn-mas">+</button>
+                
+                <div class="producto">
+                    <img src="imagenes/Sacocrochet.jpg" alt="Ruana Blanca">
+                    <h3>Saco Crochet</h3>
+                    <p>$120.000</p>
+                    <div class="cantidad">
+                        <button class="btn-menos">-</button>
+                        <span class="contador">1</span>
+                        <button class="btn-mas">+</button>
+                    </div>
+                    <button class="btn-agregar">Agregar</button>
                 </div>
-
-                <p>Total: <span class="total_price">$120.000</span></p>
-                <button class="btn-agregar">Agregar</button>
-            </div>
-
-            <!-- PRODUCTO 4 -->
-            <div class="producto">
-                <img src="imagenes/sacolana.jpg" alt="Saco de Lana">
-                <h3>Saco de Lana</h3>
-                <p class="unit_price" data-price="120000">$120.000</p>
-
-                <div class="cantidad">
-                    <button class="btn-menos">-</button>
-                    <span class="contador">1</span>
-                    <button class="btn-mas">+</button>
+                <div class="producto">
+                    <img src="imagenes/sacolana.jpg" alt="Ruana Blanca">
+                    <h3>Saco de Lana</h3>
+                    <p>$120.000</p>
+                    <div class="cantidad">
+                        <button class="btn-menos">-</button>
+                        <span class="contador">1</span>
+                        <button class="btn-mas">+</button>
+                    </div>
+                    <button class="btn-agregar">Agregar</button>
                 </div>
-
-                <p>Total: <span class="total_price">$120.000</span></p>
-                <button class="btn-agregar">Agregar</button>
-            </div>
-
-            <!-- PRODUCTO 5 -->
-            <div class="producto">
-                <img src="imagenes/poncho.jpg" alt="Poncho">
-                <h3>Poncho</h3>
-                <p class="unit_price" data-price="120000">$120.000</p>
-
-                <div class="cantidad">
-                    <button class="btn-menos">-</button>
-                    <span class="contador">1</span>
-                    <button class="btn-mas">+</button>
+                <div class="producto">
+                    <img src="imagenes/poncho.jpg" alt="Ruana Blanca">
+                    <h3>Poncho</h3>
+                    <p>$120.000</p>
+                    <div class="cantidad">
+                        <button class="btn-menos">-</button>
+                        <span class="contador">1</span>
+                        <button class="btn-mas">+</button>
+                    </div>
+                    <button class="btn-agregar">Agregar</button>
+                </div>                <div class="producto">
+                    <img src="imagenes/sacolana.jpg" alt="Ruana Blanca">
+                    <h3>Saco de Lana</h3>
+                    <p>$120.000</p>
+                    <div class="cantidad">
+                        <button class="btn-menos">-</button>
+                        <span class="contador">1</span>
+                        <button class="btn-mas">+</button>
+                    </div>
+                    <button class="btn-agregar">Agregar</button>
                 </div>
-
-                <p>Total: <span class="total_price">$120.000</span></p>
-                <button class="btn-agregar">Agregar</button>
-            </div>
-
-            <!-- PRODUCTO 6 -->
-            <div class="producto">
-                <img src="imagenes/sacolana.jpg" alt="Saco de Lana">
-                <h3>Saco de Lana</h3>
-                <p class="unit_price" data-price="120000">$120.000</p>
-
-                <div class="cantidad">
-                    <button class="btn-menos">-</button>
-                    <span class="contador">1</span>
-                    <button class="btn-mas">+</button>
-                </div>
-
-                <p>Total: <span class="total_price">$120.000</span></p>
-                <button class="btn-agregar">Agregar</button>
-            </div>
-
-        </div>
-    </section>
-</main>
-
+                </div> </section>
+    </main>
 <footer class="footer">
     <div class="footer-container">
         
@@ -221,9 +185,7 @@
     </div>
 </footer>
 
-
-<script src="scripts/navbar-ui.js"></script>
-<script src="scripts/productos.js"></script>
-
+    <script src="scripts/navbar-ui.js"></script>
+    <script src="scripts/productos.js"></script>
 </body>
 </html>
