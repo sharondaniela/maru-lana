@@ -24,6 +24,11 @@
       "nombre": "daniel",
       "email": "daniel@gmail.com",
       "password": "Daniel"
+    },
+    {
+      "nombre": "asss",
+      "email": "iris@gmail.com",
+      "password": "Iris"
     }
   ]
 }

@@ -1,0 +1,39 @@
+Descripción de la actividad 
+
+Apreciado estudiante,
+
+Bienvenido a la primera actividad de la segunda unidad didáctica del módulo mantenimiento de software, esta actividad tendrá un componente práctico importante pues se participará en la construcción de un producto colaborativo utilizando un sistema de control de versiones, específicamente github. Esta actividad se realizará de manera grupal.
+
+Para el desarrollo de la actividad, el estudiante debe:
+
+Ver los recursos dispuestos en la unidad didáctica relacionados con el uso de github
+Recopilación de la información (googlear) relacionada a la implementación de proyectos por medio de github.
+Realizar las lecturas relacionadas a continuación: (Clic para abrir la bibliografía de la unidad.)
+Channon S., Straub B, (Apress). (2021). Pro Git - Versión 2.1.22-4-g2264d13. (p7-57)
+Conformar grupos de dos o tres estudiantes. Para esta conformación, los estudiantes pueden apoyarse en el foro de acompañamiento permanente que estará disponible en la sección de herramientas del curso.
+A partir de las lecturas realizadas y las consultas autónomas adelantadas por los grupos, los estudiantes deben desarrollar el taller en el que cada grupo debe.
+Instalar Git
+Si no tiene cuentas deberán crear las cuentas en github https://github.com/
+Uno de los integrantes del equipo debe crear un nuevo repositorio
+Subir en el repositorio algún proyecto funcional preferiblemente desarrollado en otros módulos del programa trabajados anteriormente
+Crear cinco historias de usuario que posteriormente implementarán
+Los integrantes del grupo deben acceder al repositorio creado e implementar las historias de usuarios creadas
+Cómo mínimo los estudiantes deben hacer uso de los siguientes comandos git: add, commit, branch, remote, push, status, log, clone, ignore).
+Al final el proyecto debe tener los aportes de los dos o tres integrantes del grupo.
+Enviar el documento, como entregable de la actividad en las fechas establecidas.
+
+
+¡Éxitos en esta actividad!
+
+Entregable
+
+El producto de esta actividad será un documento en formato  .pdf que de respuesta al taller propuesto en la actividad, el cual será elaborado por los estudiantes en la herramienta github.
+
+Cargar el documento elaborado en formato Word o  pdf. Es fundamental que el estudiante revise la información que entregará y garantice el acceso al material entregado por parte del docente-tutor.
+
+El documento debe contener:
+
+Los datos de cada uno de los integrantes del grupo (nombre, correo institucional, IdBanner).
+La información necesaria para que el docente pueda ingresar al repositorio creado por el grupo y validar los commits realizados.
+En el repositorio se deben encontrar las historias de usuario creadas por los integrantes del equipo.
+Una descripción con los pantallazos de los pasos realizados para el desarrollo de los proyectos. Los pantallazos deben incluir información de los commits realizados por los integrantes del grupo.
