@@ -1,21 +1,10 @@
-/**
- * ========================================================================
- * PRODUCTOS.JS - Refactorizado para usar CartManager y utils
- * ========================================================================
- * Reingeniería: Ahora utiliza cart-manager.js y utils.js
- */
-
 document.addEventListener('DOMContentLoaded', () => {
-    // ═══════════════════════════════════════════════════════════════
-    // FUNCIONALIDAD DE CANTIDAD DE PRODUCTOS
-    // ═══════════════════════════════════════════════════════════════
     document.querySelectorAll('.producto').forEach(producto => {
         const btnMenos = producto.querySelector('.btn-menos');
         const btnMas = producto.querySelector('.btn-mas');
         const contadorSpan = producto.querySelector('.contador');
         let cantidad = parseInt(contadorSpan.textContent);
 
-        // Funcionalidad de multiplicación (HU compañero) - OPCIONAL
         const unitPriceElement = producto.querySelector(".unit_price");
         const totalPriceElement = producto.querySelector(".total_price");
         let unitPrice = null;
@@ -33,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         actualizarTotal();
 
-        // Botón menos
         btnMenos.addEventListener('click', () => {
             if (cantidad > 1) {
                 cantidad--;
@@ -42,31 +30,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Botón más
         btnMas.addEventListener('click', () => {
             cantidad++;
             contadorSpan.textContent = cantidad;
             actualizarTotal();
         });
 
-        // Botón agregar al carrito
         const btnAgregar = producto.querySelector('.btn-agregar');
         btnAgregar.addEventListener('click', () => {
-            // Validar si el usuario está logueado
             if (!isUserLoggedIn()) {
                 alert('Debes iniciar sesión para agregar productos al carrito.');
                 window.location.href = 'login.html';
                 return;
             }
 
-            // Obtener datos del producto
             const nombre = producto.querySelector('h3').textContent;
             const precioTexto = producto.querySelector('p').textContent;
             const precio = parsearPrecio(precioTexto);
             const imagenSrc = producto.querySelector('img').src;
             const cantidadProducto = parseInt(producto.querySelector('.contador').textContent);
 
-            // Agregar al carrito usando CartManager
             const productoData = {
                 nombre,
                 precio,
@@ -80,9 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /**
-     * Actualiza el contador del carrito en el navbar
-     */
     function actualizarNumeroCarritoEnNavbar() {
         const totalItems = CartManager.obtenerCantidadTotal();
         const carritoIcon = document.querySelector('.menu li a[href="carrito.html"]');
@@ -105,9 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    // SLIDER DE IMÁGENES
-    // ═══════════════════════════════════════════════════════════════
     const sliderWrapper = document.querySelector('.slider-wrapper');
     const slides = document.querySelectorAll('.slider-slide');
     const dotsContainer = document.querySelector('.slider-dots');
@@ -167,9 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    // BÚSQUEDA DE PRODUCTOS (HU2)
-    // ═══════════════════════════════════════════════════════════════
     function filtrarProductos(terminoBusqueda) {
         const productos = document.querySelectorAll('.producto');
         const mensajeSinResultados = document.getElementById('mensaje-sin-resultados');
@@ -188,7 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Mostrar u ocultar mensaje de "sin resultados"
         if (mensajeSinResultados) {
             if (productosEncontrados === 0 && termino !== '') {
                 mensajeSinResultados.style.display = 'block';
@@ -198,7 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Event listener para el campo de búsqueda
     const inputBusqueda = document.getElementById('busqueda-productos');
     if (inputBusqueda) {
         inputBusqueda.addEventListener('input', function(e) {
