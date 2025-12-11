@@ -94,6 +94,17 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+.error-mensaje {
+    display: none;
+    color: #ff6b6b;
+    background-color: rgba(255, 107, 107, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    border: 1px solid #ff6b6b;
+}
+
 .login {
     margin-top: 25px;
     font-size: 0.95em;
