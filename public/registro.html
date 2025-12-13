@@ -4,11 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro | Ruanas Maru-Lana</title>
+
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/registros.css">
     <link rel="stylesheet" href="css/footer.css">
+
+    <style>
+        /* Igual al login */
+        .password-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-wrapper input {
+            width: 100%;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            cursor: pointer;
+            width: 22px;
+            height: 22px;
+            fill: #555;
+        }
+    </style>
 </head>
 <body>
+
 <header>
   <nav class="navbar">
     <a href="index.html" class="logo">Ruanas Maru Lana</a>
@@ -37,35 +61,78 @@
     <span></span>
 </div>
 
+<main class="registro-page-main">
+    <section class="registro-container">
+        <h2>Crear Cuenta</h2>
 
-    <main class="registro-page-main">
-        <section class="registro-container">
-            <h2>Crear Cuenta</h2>
-            <form class="registro-form">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
+        <form class="registro-form">
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
 
-                <label for="password">Contraseña:</label>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <!-- PASSWORD -->
+            <label for="password">Contraseña:</label>
+            <div class="password-wrapper">
                 <input type="password" id="password" name="password" required>
 
-                <label for="confirm_password">Confirmar Contraseña:</label>
+                <!-- Misma SVG del login -->
+                <svg class="password-toggle" data-target="password" viewBox="0 0 24 24">
+                    <path d="M12 5C5 5 1 12 1 12s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 
+                    5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+                </svg>
+            </div>
+
+            <!-- CONFIRM PASSWORD -->
+            <label for="confirm_password">Confirmar Contraseña:</label>
+            <div class="password-wrapper">
                 <input type="password" id="confirm_password" name="confirm_password" required>
 
-                <div id="error-mensaje" class="error-mensaje"></div>
-                <button type="submit">Registrarse</button>
-            </form>
-            <p class="login">¿Ya tienes cuenta? <a href="login.html">Inicia Sesión aquí</a></p>
-        </section>
-    </main>
+                <!-- Misma SVG del login -->
+                <svg class="password-toggle" data-target="confirm_password" viewBox="0 0 24 24">
+                    <path d="M12 5C5 5 1 12 1 12s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 
+                    5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+                </svg>
+            </div>
 
-    <div id="footer-container"></div>
+            <div id="error-mensaje" class="error-mensaje"></div>
 
-    <script src="scripts/footer.js"></script>
-    <script src="scripts/utils.js"></script>
-    <script src="scripts/registro.js"></script>
-    <script src="scripts/navbar-ui.js"></script>
+            <button type="submit">Registrarse</button>
+        </form>
+
+        <p class="login">¿Ya tienes cuenta? <a href="login.html">Inicia Sesión aquí</a></p>
+    </section>
+</main>
+
+<div id="footer-container"></div>
+
+<script src="scripts/footer.js"></script>
+<script src="scripts/utils.js"></script>
+<script src="scripts/registro.js"></script>
+<script src="scripts/navbar-ui.js"></script>
+
+<script>
+    // Misma lógica del login
+    document.querySelectorAll(".password-toggle").forEach(icon => {
+        icon.addEventListener("click", () => {
+            const id = icon.dataset.target;
+            const input = document.getElementById(id);
+            const isPassword = input.type === "password";
+
+            input.type = isPassword ? "text" : "password";
+
+            // Cambiar el icono
+            icon.innerHTML = isPassword
+                ? `<path d="M1 1l22 22M12 5c7 0 11 7 11 7a21 21 0 0 1-3.29 4.56m-3.67 2.63A10 
+                   10 0 0 1 12 19c-7 0-11-7-11-7a21 21 0 0 1 3.1-4.4M9.88 
+                   9.88A3 3 0 0 1 14.12 14.12"/>`
+                : `<path d="M12 5C5 5 1 12 1 12s4 7 11 7 11-7 11-7-4-7-11-7zm0 
+                   12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>`;
+        });
+    });
+</script>
+
 </body>
 </html>
